@@ -2,40 +2,74 @@
 title: Takahiro Itazuri's Homepage
 ---
 
-## Welcome to GitHub Pages
+## About Me
+Cloud Support Engineer @ Amazon Web Services Japan G.K.
+- Premium technical support for AWS services
+- Subject Matter Expert (SME) of AWS internal accreditation on EC2 Core
+- Maintainer of [dynein (DynamoDB CLI)](https://github.com/awslabs/dynein)
 
-You can use the [editor on GitHub](https://github.com/zulinx86/zulinx86.com/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+## Interest Areas
+- Low-layer programming (e.g., linux kernel, OS from scratch)
+	- [Commits of linux kernel](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/log/?qt=grep&q=Takahiro+Itazuri)
+- Machine Learning (Adversarial Examples)
+- Computer Vision
 
-### Markdown
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+## Skills
+### Programming Languages
+- Rust
+- C++
+- C
+- Assembly (x86)
+- JavaScript
+- Python
 
-```markdown
-Syntax highlighted code block
+### Certifications
+- [Fundamental Information Technology Engineer Examination](https://www.jitec.ipa.go.jp/2_01english/02examcategories.html)
+- [Applied Information Technology Engineer Examination](https://www.jitec.ipa.go.jp/2_01english/02examcategories.html)
+- [AWS Certified Solutions Architect - Associate](https://aws.amazon.com/certification/certified-solutions-architect-associate/)
 
-# Header 1
-## Header 2
-### Header 3
+### Others
+- Linux (e.g., troubleshooting, system administration, etc...)
+- [PyTorch](https://pytorch.org/)
+- [OpenCV](https://opencv.org/)
+- Competitive programming / Programming contest
 
-- Bulleted
-- List
 
-1. Numbered
-2. List
+## Biography
+### 2021.09 - Present &nbsp; Cloud Support Engineer II @ Amazon Web Services Japan G.K.
 
-**Bold** and _Italic_ and `Code` text
+### 2020.06 - 2021.09 &nbsp; Cloud Support Engineer I @ Amazon Web Services Japan G.K.
 
-[Link](url) and ![Image](src)
-```
+### 2019.08 - 2020.05 &nbsp; Cloud Support Associate II @ Amazon Web Services Japan G.K.
 
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
+### 2019.04 - 2019.08 &nbsp; Cloud Support Associate I @ Amazon Web Services Japan G.K.
 
-### Jekyll Themes
+### 2018.08 - 2018.12 &nbsp; Research Internship @ [FOVE Inc.](https://fove-inc.com/)
+- Research theme: Video Sementic Segmentation
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/zulinx86/zulinx86.com/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+### 2017.06 - 2018.03 &nbsp; [IPA Exploratory IT Human Resource Project (MITOU Program)](https://www.ipa.go.jp/english/humandev/third.html)
+- Project title: [Software to improve sports skills enjoyably with music](https://www.ipa.go.jp/jinzai/mitou/2017/gaiyou_ig-2.html)
+- Features:
+	 - [Sonify](https://en.wikipedia.org/wiki/Data_sonification) body movement in real-time with smart-phone
+	 - Recommend songs which match the beat with body movement
+- Final presentation: [YouTube link](https://www.youtube.com/watch?v=3AcnrROn8rk)
 
-### Support or Contact
+### 2017.04 - 2019.03 &nbsp; Master of Engineering @ Waseda University
+- Belonging: [Morhishima Lab.](http://www.mlab.phys.waseda.ac.jp/?lang=en), [Department of Pure and Applied Physics](http://www.phys.waseda.ac.jp/), Graduate School of Advanced Science and Engineering
+- GPA: TBC
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+### 2013.04 - 2017.03 &nbsp; Bachelor of Science @ Waseda University
+- Belonging: [Department of Physics](http://www.phys.waseda.ac.jp/), School of Advanced Science and Engineering
+- GPA: TBC
+
+
+## Links
+- GitHub
+	- For personal use: [zulinx86](https://github.com/zulinx86)
+	- For business use: [itazur](https://github.com/itazur)
+- [Twitter](https://twitter.com/zulinx86)
+- [LinkedIn](https://www.linkedin.com/in/takahiro-itazuri-b6567b148/)
+- [AtCoder](https://atcoder.jp/users/zulinx86)
+
