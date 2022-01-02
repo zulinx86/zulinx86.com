@@ -1,3 +1,7 @@
+---
+title: Takahiro Itazuri's Homepage
+---
+
 ## Welcome to GitHub Pages
 
 You can use the [editor on GitHub](https://github.com/zulinx86/zulinx86.com/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
