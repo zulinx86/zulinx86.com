@@ -126,3 +126,8 @@ ___
 | Header      | Title       |
 | Paragraph   | Text        |
 
+
+# Links
+- [Markdown Guide](https://www.markdownguide.org/)
+- [Jekyll • Simple, blog-aware, static sites | Transform your plain text into static websites and blogs](https://jekyllrb.com/)
+- [pages-themes/hacker: Hacker is a Jekyll theme for GitHub Pages](https://github.com/pages-themes/hacker)
