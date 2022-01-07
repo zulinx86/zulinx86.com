@@ -2,14 +2,15 @@
 title: Takahiro Itazuri's Homepage
 ---
 
-## About Me
 ![portrait](img/portrait.jpeg)
 
 Cloud Support Engineer @ Amazon Web Services Japan G.K.
 - Premium technical support for AWS services (especially EC2, EBS, Linux, ElastiCache, EFS, etc...).
 - Subject Matter Expert (SME) of AWS internal accreditation on EC2 Core.
 - Hiring and training other support engineers.
-- Maintainer of [dynein (DynamoDB CLI written in Rust)](https://github.com/awslabs/dynein).
+- Maintainer of softwares.
+	- [dynein (DynamoDB CLI written in Rust)](https://github.com/awslabs/dynein)
+	- Internal tools
 
 ---
 
@@ -48,8 +49,9 @@ Cloud Support Engineer @ Amazon Web Services Japan G.K.
 - Premium technical support for AWS services (EC2, EBS, Linux, ElastiCache, EFS, etc...).
 - Subject Matter Expert (SME) of AWS internal accreditation on EC2 Core.
 - Hiring and training other support engineers.
-- Maintainer of [dynein (DynamoDB CLI written in Rust)](https://github.com/awslabs/dynein).
-
+- Maintainer of softwares.
+	- [dynein (DynamoDB CLI written in Rust)](https://github.com/awslabs/dynein)
+	- Internal tools
 
 #### 2020.06 - 2021.09 &nbsp; Cloud Support Engineer I @ Amazon Web Services Japan G.K.
 - Premium technical support for AWS services (EC2, EBS, Linux, ElastiCache, EFS, etc...).
