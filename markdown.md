@@ -65,11 +65,24 @@ normal text
 ```
 > This is a quoted text.
 >> This is a doubly quoted text.
+
+<blockquote>
+This is a quoted text.
+<blockquote>
+This is a doubly quoted text.
+</blockquote>
+</blockquote>
 ```
 
 > This is a quoted text.
 >> This is a doubly quoted text.
 
+<blockquote>
+This is a quoted text.
+<blockquote>
+This is a doubly quoted text.
+</blockquote>
+</blockquote>
 
 # Italic / Bold
 ```
@@ -119,6 +132,23 @@ ___
 | ----------- | ----------- |
 | Header      | Title       |
 | Paragraph   | Text        |
+
+<table>
+	<tr>
+		<th>A</th>
+		<th>B</th>
+		<th>C</th>
+	</tr>
+	<tr>
+		<td>A-1</td>
+		<td>B-1</td>
+		<td>C-1</td>
+	</tr>
+	<tr>
+		<td colspan="2">A-2,B-2</td>
+		<td>C-2</td>
+	</tr>
+</table>
 ```
 
 | Syntax      | Description |
@@ -126,6 +156,22 @@ ___
 | Header      | Title       |
 | Paragraph   | Text        |
 
+<table>
+	<tr>
+		<th>A</th>
+		<th>B</th>
+		<th>C</th>
+	</tr>
+	<tr>
+		<td>A-1</td>
+		<td>B-1</td>
+		<td>C-1</td>
+	</tr>
+	<tr>
+		<td colspan="2">A-2,B-2</td>
+		<td>C-2</td>
+	</tr>
+</table>
 
 # Links
 - [Markdown Guide](https://www.markdownguide.org/)
