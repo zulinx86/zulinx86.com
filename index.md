@@ -3,6 +3,8 @@ title: Takahiro Itazuri's Homepage
 ---
 
 ## About Me
+![portrait](img/portrait.jpeg)
+
 Cloud Support Engineer @ Amazon Web Services Japan G.K.
 - Premium technical support for AWS services
 - Subject Matter Expert (SME) of AWS internal accreditation on EC2 Core
