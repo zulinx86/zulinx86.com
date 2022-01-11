@@ -15,11 +15,12 @@ Cloud Support Engineer @ Amazon Web Services Japan G.K.
 ---
 
 ## Interest Areas
-- Low-layer programming (OS, CPU, etc...)
+- Low-layer programming (OS, CPU, Virtualization etc...)
 - OSS contribution
 	- [Commits to linux kernel](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/log/?qt=grep&q=Takahiro+Itazuri)
 	- [Commits to dynein](https://github.com/awslabs/dynein/commits/main?author=itazur)
-- Machine Learning (Adversarial Examples) & Computer Vision
+- Machine Learning (Adversarial Examples)
+- Computer Vision
 
 ---
 
