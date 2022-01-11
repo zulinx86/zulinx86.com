@@ -74,12 +74,12 @@ Cloud Support Engineer @ Amazon Web Services Japan G.K.
 - Final presentation: [YouTube](https://www.youtube.com/watch?v=3AcnrROn8rk)
 
 #### 2017.04 - 2019.03 &nbsp; Master of Engineering @ Waseda University
-- Belonging: [Morhishima Lab.](http://www.mlab.phys.waseda.ac.jp/?lang=en), [Department of Pure and Applied Physics](http://www.phys.waseda.ac.jp/), Graduate School of Advanced Science and Engineering
-- GPA: TBC
+- Belonging: [Morhishima Lab.](http://www.mlab.phys.waseda.ac.jp/?lang=en), [Master Department of Pure and Applied Physics](http://www.phys.waseda.ac.jp/), Graduate School of Advanced Science and Engineering
+- GPA: 3.87
 
 #### 2013.04 - 2017.03 &nbsp; Bachelor of Science @ Waseda University
 - Belonging: [Morhishima Lab.](http://www.mlab.phys.waseda.ac.jp/?lang=en), [Department of Physics](http://www.phys.waseda.ac.jp/), School of Advanced Science and Engineering
-- GPA: TBC
+- GPA: 3.26
 
 ---
 
