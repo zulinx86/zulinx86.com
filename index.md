@@ -15,7 +15,7 @@ Cloud Support Engineer @ Amazon Web Services Japan G.K.
 ---
 
 ## Interest Areas
-- Low-layer programming (OS, CPU, Virtualization etc...)
+- Low-layer programming (OS, Virtualization, ISA, etc...)
 - OSS contribution
 	- [Commits to linux kernel](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/log/?qt=grep&q=Takahiro+Itazuri)
 	- [Commits to dynein](https://github.com/awslabs/dynein/commits/main?author=itazur)
@@ -81,6 +81,43 @@ Cloud Support Engineer @ Amazon Web Services Japan G.K.
 #### 2013.04 - 2017.03 &nbsp; Bachelor of Science @ Waseda University
 - Belonging: [Morhishima Lab.](http://www.mlab.phys.waseda.ac.jp/?lang=en), [Department of Physics](http://www.phys.waseda.ac.jp/), School of Advanced Science and Engineering
 - GPA: 3.26
+
+---
+
+## Hobby
+### Toy OS ([Haribote OS](https://book.mynavi.jp/ec/products/detail/id=22078))
+- 32-bit OS running on (single core) x86.
+- Boot from Legacy BIOS.
+- GUI (window system, mouse pointer, ...) and CUI (console window with simple commands).
+- Multi-tasking.
+- Simple system calls.
+- Some applications (timer, calculator, text viewer, image viewer, invader game, etc...).
+
+<video controls autoplay loop src="video/HariboteOS_QEMU.mov"></video>
+
+### Toy CPU ([TD4](https://book.mynavi.jp/ec/products/detail/id=22065))
+- 4-bit CPU using 74HC series logic chips.
+- Simple ISA
+	- Fixed length instructions (4-bit for opcode and 4-bit for operand).
+	- Instructions: MOV, ADD, IN, OUT, JMP, JNC.
+- Hardware specifications:
+	- 4-bit general registers (A register and B register).
+	- 1-bit flag register (for carry flag).
+	- 4-bit program counter.
+	- 4-bit I/O ports.
+	- 16-byte ROM with binary code.
+
+#### Breadboard ver.
+
+<video controls autoplay loop src="video/TD4_breadboard.mov"></video>
+
+#### [Printed Board ver.](https://booth.pm/ja/items/2093868)
+
+<video controls autoplay loop src="video/TD4_printed-board.mov"></video>
+
+#### [FPGA ver.](https://book.mynavi.jp/ec/products/detail/id=116654)
+
+<video controls autoplay loop src="video/TD4_FPGA.mov"></video>
 
 ---
 
