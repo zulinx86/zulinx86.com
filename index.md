@@ -26,15 +26,15 @@ Cloud Support Engineer @ Amazon Web Services Japan G.K.
 
 ## Skills
 ### Programming Languages
-- Rust
 - C++
 - C
+- Rust
 - Assembly (x86)
 - JavaScript
 - Python
 
 ### Technical Skills
-- Linux (toubleshooting, system administratioon, etc...)
+- Linux (toubleshooting, etc...)
 - PyTorch
 - OpenCV
 
