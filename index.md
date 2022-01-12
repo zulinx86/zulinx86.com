@@ -94,7 +94,7 @@ Cloud Support Engineer @ Amazon Web Services Japan G.K.
 - Simple system calls.
 - Some applications (timer, calculator, text viewer, image viewer, invader game, etc...).
 
-<video autoplay loop muted controls src="video/HariboteOS_QEMU.mov"></video>
+<video controls autoplay loop muted src="video/HariboteOS_QEMU.mov"></video>
 
 ### Toy CPU ([TD4](https://book.mynavi.jp/ec/products/detail/id=22065))
 - 4-bit CPU using 74HC series logic chips.
@@ -110,15 +110,15 @@ Cloud Support Engineer @ Amazon Web Services Japan G.K.
 
 #### Breadboard ver.
 
-<video autoplay loop muted controls src="video/TD4_breadboard.mov"></video>
+<video controls autoplay loop muted src="video/TD4_breadboard.mov"></video>
 
 #### [Printed Board ver.](https://booth.pm/ja/items/2093868)
 
-<video autoplay loop muted controls src="video/TD4_printed-board.mov"></video>
+<video controls autoplay loop muted src="video/TD4_printed-board.mov"></video>
 
 #### [FPGA ver.](https://book.mynavi.jp/ec/products/detail/id=116654)
 
-<video autoplay loop muted controls src="video/TD4_FPGA.mov"></video>
+<video controls autoplay loop muted src="video/TD4_FPGA.mov"></video>
 
 ---
 
