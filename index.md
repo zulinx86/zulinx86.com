@@ -5,7 +5,7 @@ title: Takahiro Itazuri's Homepage
 ![portrait](img/portrait.jpeg)
 
 Cloud Support Engineer @ Amazon Web Services Japan G.K.
-- Premium technical support for AWS services (especially EC2, EBS, Linux, ElastiCache, EFS, etc...).
+- Premium technical support for AWS services (especially EC2, EBS, Linux).
 - Subject Matter Expert (SME) of AWS internal accreditation on EC2 Core.
 - Hiring and training other support engineers.
 - Maintainer of softwares.
@@ -19,8 +19,8 @@ Cloud Support Engineer @ Amazon Web Services Japan G.K.
 - OSS contribution
 	- [Commits to linux kernel](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/log/?qt=grep&q=Takahiro+Itazuri)
 	- [Commits to dynein](https://github.com/awslabs/dynein/commits/main?author=itazur)
-- Machine Learning (Adversarial Examples)
-- Computer Vision
+- Computer Vision, Multimedia Processing, Machine Learning (especially Adversarial Examples)
+	- [Research projects & publications](/research.html)
 
 ---
 
@@ -76,6 +76,7 @@ Cloud Support Engineer @ Amazon Web Services Japan G.K.
 
 #### 2017.04 - 2019.03 &nbsp; Master of Engineering @ Waseda University
 - Belonging: [Morhishima Lab.](http://www.mlab.phys.waseda.ac.jp/?lang=en), [Master Department of Pure and Applied Physics](http://www.phys.waseda.ac.jp/), Graduate School of Advanced Science and Engineering
+- [Research projects & publications](/research.html)
 - GPA: 3.87
 
 #### 2013.04 - 2017.03 &nbsp; Bachelor of Science @ Waseda University
