@@ -126,7 +126,8 @@ Cloud Support Engineer @ Amazon Web Services Japan G.K.
 - GitHub
 	- For personal use: [zulinx86](https://github.com/zulinx86)
 	- For business use: [itazur](https://github.com/itazur)
-- [Twitter](https://twitter.com/zulinx86)
+	- Previously used: [takahiro-itazuri](https://github.com/takahiro-itazuri)
 - [LinkedIn](https://www.linkedin.com/in/takahiro-itazuri-b6567b148/)
 - [AtCoder](https://atcoder.jp/users/zulinx86)
+- [Twitter](https://twitter.com/zulinx86)
 
