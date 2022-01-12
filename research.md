@@ -10,7 +10,7 @@ title: Research
 			<img src="img/Do_We_Need_Sound_for_Sound_Source_Localization.png" style="width: 30vw;">
 		</td>
 		<td>
-			<h4>Do We Need Sound for Sound Source Localization?</h4>
+			<h3>Do We Need Sound for Sound Source Localization?</h3>
 			Takashi Ohya, Shohei Iwase, Ryota Natsume, <b>Takahiro Itazuri</b>, Shugo Yamaguchi, and Shigeo Morishima<br>
 			@ Asian Conference on Computer Vision 2020 (ACCV 2020)<br>
 			<a href="https://openaccess.thecvf.com/content/ACCV2020/papers/Oya_Do_We_Need_Sound_for_Sound_Source_Localization_ACCV_2020_paper.pdf">[paper]</a>
@@ -21,7 +21,7 @@ title: Research
 			<img src="img/What_Do_Adversarially_Robust_Models_Look_At.png" style="width: 30vw;">
 		</td>
 		<td>
-			<h4>What Do Adversarially Robust Models Look At?</h4>
+			<h3>What Do Adversarially Robust Models Look At?</h3>
 			<b>Takahiro Itazuri</b>, Yoshihiro Fukuhara, Hirokatsu Kataoka, and Shigeo Morishima<br>
 			<a href="https://arxiv.org/abs/1905.07666">[paper]</a>
 		</td>
@@ -31,7 +31,7 @@ title: Research
 			<img src="img/Generating_Video_from_Single_Image_and_Sound.png" style="width: 30vw;">
 		</td>
 		<td>
-			<h4>Generating Video from Single Image and Sound</h4>
+			<h3>Generating Video from Single Image and Sound</h3>
 			Yukitaka Tsuchiya, <b>Takahiro Itazuri</b>, Ryota Natsume, Shintaro Yamamoto, Takuya Kato, and Shigeo Morishima<br>
 			@ Computer Vision and Pattern Recognition Workshop 2019 (CVPRW 2019)<br>
 			<a href="http://openaccess.thecvf.com/content_CVPRW_2019/papers/Sight%20and%20Sound/Yukitaka_Tsuchiya_Generating_Video_from_Single_Image_and_Sound_CVPRW_2019_paper.pdf">[paper]</a><a href="https://youtu.be/nNjLzcdt_xE">[video]</a>
@@ -42,7 +42,7 @@ title: Research
 			<img src="img/Self-Supervised_Learning_for_Spatiotemporal_3DCNN_Towards_Effective_Motion_Feature.png" style="width: 30vw;">
 		</td>
 		<td>
-			<h4>Learning Spatiotemporal 3D Convolution with Video Order Self-Supervision</h4>
+			<h3>Learning Spatiotemporal 3D Convolution with Video Order Self-Supervision</h3>
 			Tomoyuki Suzuki, <b>Takahiro Itazuri</b>, Kensho Hara, and Hirokatsu Kataoka<br>
 			@ European Conference on Computer Vision Workshop 2018 (ECCVW 2018)<br>
 			<a href="https://openaccess.thecvf.com/content_ECCVW_2018/papers/11130/Suzuki_Learning_Spatiotemporal_3D_Convolution_with_Video_Order_Self-Supervision_ECCVW_2018_paper.pdf">[paper]</a>
@@ -53,7 +53,7 @@ title: Research
 			<img src="img/RhythMo.png" style="width: 30vw;">
 		</td>
 		<td>
-			<h4>Movement Sonification for Motor Learning</h4>
+			<h3>Movement Sonification for Motor Learning</h3>
 			<b>Takahiro Itazuri</b>, Tsukasa Fukusato, and Shigeo Morishima<br>
 			@ IPA Exploratory IT Human Resource Project (MITOU Program 2017)<br>
 			<a href="https://youtu.be/3AcnrROn8rk">[video]</a>
@@ -64,8 +64,7 @@ title: Research
 			<img src="img/Court-based_Volleyball_Video_Summarization_Focusing_on_Rally_Scene.png" style="width: 30vw;">
 		</td>
 		<td>
-			<h4>Court-based Volleyball Video Summarization Focusing on Rally Scene
-</h4>
+			<h3>Court-based Volleyball Video Summarization Focusing on Rally Scene</h3>
 			<b>Takahiro Itazuri</b>, Tsukasa Fukusato, Shugo Yamaguchi, and Shigeo Morishima<br>
 			@ Computer Vision and Pattern Recognition Workshops 2017 (CVPRW 2017)<br>
 			<a href="https://openaccess.thecvf.com/content_cvpr_2017_workshops/w2/papers/Itazuri_Court-Based_Volleyball_Video_CVPR_2017_paper.pdf">[paper]</a>
