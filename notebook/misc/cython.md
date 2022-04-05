@@ -6,7 +6,7 @@ title: Cython
 # What is Cython?
 - Cython is pronounced /ˈsaɪθɒn/.
 - It makes writing C extensions for Python as easy as Python itself.
-- It's designed to get C-like performance with code that is written mostly in Python with optional addition C-inspired syntax.
+- It's designed to get C-like performance with code that is written mostly in Python with optional additional C-inspired syntax.
 - Annotated Python-like code is compiled to C/C++, then automatically wrapped in interface code, producing extension modules that can be loaded by regular Python code with significantly less computational overhead at runtime.
 
 
