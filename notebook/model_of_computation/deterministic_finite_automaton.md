@@ -3,12 +3,12 @@ layout: post
 title: Deterministic Finite Automaton
 ---
 
-# What is Deterministic Finite Automaton (DFA)?
+## What is Deterministic Finite Automaton (DFA)?
 - DFA is a finite-state machine that accepts or rejects a given string of symbols.
 - *Deterministic* refers to the uniqueness of the computation run.
 
 
-## Components
+### Components
 - Input sequence of symbols
 	- Its length is finite.
 	- DFA operates on it one by one from left to right.
@@ -18,7 +18,7 @@ title: Deterministic Finite Automaton
 	- The next state is detemined by the current symbol and the current state.
 
 
-## Formal definition
+### Formal definition
 - DFA can be formally defined as a 5-tuple $$ M = (Q, \Sigma, \delta, q_0, F) $$ where
 	- $$ Q $$ is a finite set of states
 	- $$ \Sigma $$ is a finite set of input symbols
@@ -33,7 +33,7 @@ title: Deterministic Finite Automaton
 
 
 
-# Simple DFA Simulator in C++
+## Simple DFA Simulator in C++
 Note: It might be easier to understand this implementation if you look at the examples described later at first.
 
 ```cpp
@@ -95,7 +95,7 @@ int main() {
 ```
 
 
-## Check if the given string includes 'a'
+### Check if the given string includes 'a'
 - Input sequence of symbols: `bbbab`
 - Head
 	- Initial position: the head of the tape
@@ -153,5 +153,5 @@ ACCEPTED
 
 
 
-# Links
+## Links
 - [Deterministic finite automaton - Wikipedia](https://en.wikipedia.org/wiki/Deterministic_finite_automaton)

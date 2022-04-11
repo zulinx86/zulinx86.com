@@ -3,11 +3,11 @@ layout: post
 title: Turing Machine
 ---
 
-# What is Turing Machine?
+## What is Turing Machine?
 A Turing machine mathematically models a machine that mechanically operates on a tape.
 
 
-## Components
+### Components
 - Tape
 	- Its length is infinite.
 	- It is divided into discrete cells, one next to the other.
@@ -26,7 +26,7 @@ A Turing machine mathematically models a machine that mechanically operates on a
 	- It is called 5-tuple models because it has two inputs and three outputs.
 
 
-## Formal Definition
+### Formal Definition
 - Turing machine can be formally defined as a 7-tuple $$ M = \langle Q, \Gamma, b, \Sigma, \delta, q_0, F \rangle $$ where
 	- $$ \Gamma $$ is a finite, non-empty set of tape alphabet symbols
 	- $$ b \in \Gamma $$ is the blank symbol (the only symbol allowed to occr on the tape infinitely)
@@ -38,7 +38,7 @@ A Turing machine mathematically models a machine that mechanically operates on a
 
 
 
-# Simple Turing Machine Simulator in C++
+## Simple Turing Machine Simulator in C++
 Note: It might be easier to understand this implementation if you look at the examples described later at first.
 
 ```cpp
@@ -120,7 +120,7 @@ int main() {
 ```
 
 
-## Change `0` to `1` until the head reaches `-`
+### Change `0` to `1` until the head reaches `-`
 - Tape
 	- Initial tape: `01100`
 	- Final tape: `11111`
@@ -180,7 +180,7 @@ A
 ```
 
 
-## Addition of two binary numbers
+### Addition of two binary numbers
 - Objective: add `0b1010` and `0b111`
 - Tape
 	- Initial tape: `1010-111`
@@ -622,13 +622,13 @@ A
 
 
 
-# What is Universal Turing Machine and Turing-complete?
+## What is Universal Turing Machine and Turing-complete?
 - A universal turing machine (UTM) is a Turing machine that simulates an arbitrary Turing machine on arbitrary input.
 - A system that can simulate a universal Turing machine is called Turing complete.
 
 
 
-# Links
+## Links
 - [Turing machine - Wikipedia](https://en.wikipedia.org/wiki/Turing_machine)
 - [Universal Turing machine - Wikipedia](https://en.wikipedia.org/wiki/Universal_Turing_machine)
 - [Turing completeness - Wikipedia](https://en.wikipedia.org/wiki/Turing_completeness)
