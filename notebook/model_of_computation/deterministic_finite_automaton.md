@@ -27,9 +27,9 @@ title: Deterministic Finite Automaton
 	- $$ F \subseteq Q $$ is a set of accept states
 - Let $$ w = a_1 a_2 \cdots a_n $$ be a string over $$ \Sigma $$.
 - The automaton $$ M $$ accepts the string $$ w $$ if a sequence of states $$ r_0, r_1, \cdots, r_n $$ exists in $$ Q $$ with the following conditions:
-	1. $$ r_0 = q_0 $$
-	1. $$ r_{i + 1} = \delta (r_i, a_{i + 1})$$ for $$ i = 0, \cdots, n - 1 $$
-	1. $$ r_n \in F $$
+	1. $$ r_0 = q_0 $$.
+	1. $$ r_{i + 1} = \delta (r_i, a_{i + 1})$$ for $$ i = 0, \cdots, n - 1 $$.
+	1. $$ r_n \in F $$.
 
 
 
