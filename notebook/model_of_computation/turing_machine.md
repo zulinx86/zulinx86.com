@@ -16,10 +16,10 @@ A Turing machine mathematically models a machine that mechanically operates on a
 	- It can move cells on the tape.
 	- It can read and write the symbol of the cell where the head is.
 - State register
-	- It stores the state of the Turing machine from a finite set of states  including an initial state and final states.
+	- It stores the state of the Turing machine from a finite set of states including an initial state and final states.
 	- When the state goes to the final states, the machine halts.
 - Table of rules / instructions
-	- Given the current state and the symbol currently under the head, it tells the machine to do the following in sequence:
+	- Given the current state and the symbol currently under the head, the table returns the following items:
 		1. New symbol currently under the head
 		1. New position of the head (one step left, one stpe right, or stay in the same place)
 		1. New state of the machine
