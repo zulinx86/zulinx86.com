@@ -173,6 +173,14 @@ ___
 	</tr>
 </table>
 
+
+# Math
+```
+$$ x^2 + y^2 = z^2 $$
+```
+$$ x^2 + y^2 = z^2 $$
+
+
 # Links
 - [Markdown Guide](https://www.markdownguide.org/)
 - [Jekyll](https://jekyllrb.com/)
