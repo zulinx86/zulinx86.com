@@ -26,6 +26,18 @@ A Turing machine mathematically models a machine that mechanically operates on a
 	- It is called 5-tuple models because it has two inputs and three outputs.
 
 
+## Formal Definition
+- Turing machine can be formally defined as a 7-tuple $$ M = \langle Q, \Gamma, b, \Sigma, \delta, q_0, F \rangle $$ where
+	- $$ \Gamma $$ is a finite, non-empty set of tape alphabet symbols
+	- $$ b \in \Gamma $$ is the blank symbol (the only symbol allowed to occr on the tape infinitely)
+	- $$ \Sigma \subseteq \Gamma \setminus \{ b \} $$ is the set of input symbols, that is, the set of symbols allowed to appear in the initial tape contents
+	- $$ Q $$ is a finite, non-empty set of states
+	- $$ q_0 \in Q $$ is the initial state
+	- $$ F \subseteq Q $$ is the set of final states or accepting states
+	- $$ \delta : (Q \setminus F) \times \Gamma \mapsto Q \times \Gamma \times \{ L, R, S \} $$ is a transition function, where $$ L $$ is left shift, $$ R $$ is right shift, $$ S $$ is stay.
+
+
+
 # Simple Turing Machine Simulator in C++
 Note: It might be easier to understand this implementation if you look at the examples described later at first.
 
@@ -609,9 +621,11 @@ A
 ```
 
 
+
 # What is Universal Turing Machine and Turing-complete?
 - A universal turing machine (UTM) is a Turing machine that simulates an arbitrary Turing machine on arbitrary input.
 - A system that can simulate a universal Turing machine is called Turing complete.
+
 
 
 # Links
