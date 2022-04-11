@@ -177,8 +177,12 @@ ___
 # Math
 ```
 $$ x^2 + y^2 = z^2 $$
+
+Hello inline mathematical expression $$ 1 + 1 = 2 $$ !
 ```
 $$ x^2 + y^2 = z^2 $$
+
+Hello inline mathematical expression $$ 1 + 1 = 2 $$ !
 
 
 # Links
