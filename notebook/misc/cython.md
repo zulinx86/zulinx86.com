@@ -3,14 +3,14 @@ layout: post
 title: Cython
 ---
 
-# What is Cython?
+## What is Cython?
 - Cython is pronounced /ˈsaɪθɒn/.
 - It makes writing C extensions for Python as easy as Python itself.
 - It's designed to get C-like performance with code that is written mostly in Python with optional additional C-inspired syntax.
 - Annotated Python-like code is compiled to C/C++, then automatically wrapped in interface code, producing extension modules that can be loaded by regular Python code with significantly less computational overhead at runtime.
 
 
-# How to Compile
+## How to Compile
 - Required Files
 	- Cython code (`*.pyx`)
 	- Setup script (`setup.py`)
@@ -21,20 +21,20 @@ title: Cython
 	- `.pyx` -(Cython compiler)-> `.c` -(C compiler)-> `.so`
 
 
-# How to Set Up
+## How to Set Up
 ```sh
 $ conda install cython
 ```
 
-# Examples
-## Hello World (To understand compile process)
-### hello.pyx
+## Examples
+### Hello World (To understand compile process)
+#### hello.pyx
 ```py
 def say_hello():
 	print("Hello World!")
 ```
 
-### setup.py
+#### setup.py
 ```py
 from setuptools import setup
 from Cython.Build import cythonize
@@ -42,13 +42,13 @@ from Cython.Build import cythonize
 setup(name = "Hello World", ext_modoles = cythonize("*.pyx"))
 ```
 
-### main.py
+#### main.py
 ```py
 import hello
 hello.say_hello()
 ```
 
-### Build and Execute
+#### Build and Execute
 ```sh
 $ ls
 hello.pyx       setup.py        main.py
@@ -73,8 +73,8 @@ Hello World!
 ```
 
 
-## Fibonacci Number
-### fib_cython.pyx
+### Fibonacci Number
+#### fib_cython.pyx
 ```pyx
 def fib_cython1(n):
 	a, b = 0, 1
@@ -97,7 +97,7 @@ def fib_cython3(int n):
 	return a
 ```
 
-### setup.py
+#### setup.py
 ```py
 from setuptools import setup
 from Cython.Build import cythonize
@@ -105,7 +105,7 @@ from Cython.Build import cythonize
 setup(name = "Fibonacci Number", ext_modules = cythonize("*.pyx"))
 ```
 
-### main.py
+#### main.py
 ```py
 import time
 from fib_cython import *
@@ -137,7 +137,7 @@ end_time = time.process_time()
 print("fib_cython3: {}".format(end_time - start_time))
 ```
 
-### Build and Execute
+#### Build and Execute
 ```
 $ python3 setup.py build_ext --inplace
 $ python3 main.py
