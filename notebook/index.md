@@ -3,6 +3,8 @@ layout: post
 title: Table of Contents
 ---
 
+- Linux
+	- [auditd](https://zulinx86.com/notebook/linux/auditd)
 - Model of Computation
 	- [Deterministic Finite Automaton](https://zulinx86.com/notebook/model_of_computation/deterministic_finite_automaton)
 	- [Turing Machine](https://zulinx86.com/notebook/model_of_computation/turing_machine)
