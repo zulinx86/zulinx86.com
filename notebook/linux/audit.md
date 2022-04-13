@@ -312,6 +312,6 @@ type=CONFIG_CHANGE msg=audit(04/13/22 02:26:30.190:125895) : auid=ec2-user ses=1
 
 
 ## Links
-- [Chapter 7. System Auditing Red Hat Enterprise Linux 7 | Red Hat Customer Portal](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/security_guide/chap-system_auditing)
+- [Chapter 7. System Auditing Red Hat Enterprise Linux 7 - Red Hat Customer Portal](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/security_guide/chap-system_auditing)
 - [RHEL Audit System Reference - Red Hat Customer Portal](https://access.redhat.com/articles/4409591)
 - [Home · linux-audit/audit-documentation Wiki](https://github.com/linux-audit/audit-documentation/wiki)
