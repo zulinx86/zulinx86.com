@@ -257,9 +257,9 @@ loginuid_immutable 0 unlocked
 
 ### Watch directory
 ```sh
-$ sudo auditctl -w /home/ec2-user/ -p rwxa
+$ sudo auditctl -w /home/ec2-user/ -p rwxa -k my_rule
 $ sudo auditctl -l
--w /home/ec2-user/ -p rwxa
+-w /home/ec2-user -p rwxa -k my_rule
 
 $ touch hello.txt
 $ echo hello > hello.txt
@@ -271,22 +271,42 @@ $ sudo auditctl -D
 No rules
 
 $ sudo cat /var/log/audit/audit.log | grep hello
-type=PATH msg=audit(1649768935.858:125025): item=1 name="hello.txt" inode=13253038 dev=ca:01 mode=0100664 ouid=1000 ogid=1000 rdev=00:00 nametype=CREATE cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
-type=PATH msg=audit(1649768940.030:125026): item=1 name="hello.txt" inode=13253038 dev=ca:01 mode=0100664 ouid=1000 ogid=1000 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
-type=PATH msg=audit(1649768942.710:125027): item=0 name="hello.txt" inode=13253038 dev=ca:01 mode=0100664 ouid=1000 ogid=1000 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
-type=PATH msg=audit(1649768945.306:125030): item=1 name="hello.txt" inode=13253038 dev=ca:01 mode=0100664 ouid=1000 ogid=1000 rdev=00:00 nametype=DELETE cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1649816776.126:125885): item=1 name="hello.txt" inode=12591969 dev=ca:01 mode=0100664 ouid=1000 ogid=1000 rdev=00:00 nametype=CREATE cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1649816780.946:125886): item=1 name="hello.txt" inode=12591969 dev=ca:01 mode=0100664 ouid=1000 ogid=1000 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1649816783.578:125887): item=0 name="hello.txt" inode=12591969 dev=ca:01 mode=0100664 ouid=1000 ogid=1000 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1649816787.178:125890): item=1 name="hello.txt" inode=12591969 dev=ca:01 mode=0100664 ouid=1000 ogid=1000 rdev=00:00 nametype=DELETE cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
 
-$ sudo aureport --file
-
-File Report
-===============================================
-# date time file syscall success exe auid event
-===============================================
-(snipped)
-17187. 04/12/22 13:08:55 /home/ec2-user 257 yes /usr/bin/touch 1000 125025
-17188. 04/12/22 13:09:00 /home/ec2-user 257 yes /usr/bin/bash 1000 125026
-17189. 04/12/22 13:09:02 hello.txt 257 yes /usr/bin/cat 1000 125027
-17190. 04/12/22 13:09:05 /home/ec2-user 263 yes /usr/bin/rm 1000 125030
+$ sudo ausearch -k my_rule -i
+----
+type=CONFIG_CHANGE msg=audit(04/13/22 02:26:02.149:125874) : auid=ec2-user ses=104 op=add_rule key=my_rule list=exit res=yes 
+----
+type=PROCTITLE msg=audit(04/13/22 02:26:16.126:125885) : proctitle=touch hello.txt 
+type=PATH msg=audit(04/13/22 02:26:16.126:125885) : item=1 name=hello.txt inode=12591969 dev=ca:01 mode=file,664 ouid=ec2-user ogid=ec2-user rdev=00:00 nametype=CREATE cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=PATH msg=audit(04/13/22 02:26:16.126:125885) : item=0 name=/home/ec2-user inode=13261880 dev=ca:01 mode=dir,700 ouid=ec2-user ogid=ec2-user rdev=00:00 nametype=PARENT cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(04/13/22 02:26:16.126:125885) : cwd=/home/ec2-user 
+type=SYSCALL msg=audit(04/13/22 02:26:16.126:125885) : arch=x86_64 syscall=openat success=yes exit=3 a0=0xffffffffffffff9c a1=0x7ffc8b70b6fa a2=O_WRONLY|O_CREAT|O_NOCTTY|O_NONBLOCK a3=0x1b6 items=2 ppid=1062 pid=1093 auid=ec2-user uid=ec2-user gid=ec2-user euid=ec2-user suid=ec2-user fsuid=ec2-user egid=ec2-user sgid=ec2-user fsgid=ec2-user tty=pts0 ses=104 comm=touch exe=/usr/bin/touch key=my_rule 
+----
+type=PROCTITLE msg=audit(04/13/22 02:26:20.946:125886) : proctitle=-bash 
+type=PATH msg=audit(04/13/22 02:26:20.946:125886) : item=1 name=hello.txt inode=12591969 dev=ca:01 mode=file,664 ouid=ec2-user ogid=ec2-user rdev=00:00 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=PATH msg=audit(04/13/22 02:26:20.946:125886) : item=0 name=/home/ec2-user inode=13261880 dev=ca:01 mode=dir,700 ouid=ec2-user ogid=ec2-user rdev=00:00 nametype=PARENT cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(04/13/22 02:26:20.946:125886) : cwd=/home/ec2-user 
+type=SYSCALL msg=audit(04/13/22 02:26:20.946:125886) : arch=x86_64 syscall=openat success=yes exit=3 a0=0xffffffffffffff9c a1=0x198f980 a2=O_WRONLY|O_CREAT|O_TRUNC a3=0x1b6 items=2 ppid=1061 pid=1062 auid=ec2-user uid=ec2-user gid=ec2-user euid=ec2-user suid=ec2-user fsuid=ec2-user egid=ec2-user sgid=ec2-user fsgid=ec2-user tty=pts0 ses=104 comm=bash exe=/usr/bin/bash key=my_rule 
+----
+type=PROCTITLE msg=audit(04/13/22 02:26:23.578:125887) : proctitle=cat hello.txt 
+type=PATH msg=audit(04/13/22 02:26:23.578:125887) : item=0 name=hello.txt inode=12591969 dev=ca:01 mode=file,664 ouid=ec2-user ogid=ec2-user rdev=00:00 nametype=NORMAL cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(04/13/22 02:26:23.578:125887) : cwd=/home/ec2-user 
+type=SYSCALL msg=audit(04/13/22 02:26:23.578:125887) : arch=x86_64 syscall=openat success=yes exit=3 a0=0xffffffffffffff9c a1=0x7ffcfedce6fe a2=O_RDONLY a3=0x0 items=1 ppid=1062 pid=1094 auid=ec2-user uid=ec2-user gid=ec2-user euid=ec2-user suid=ec2-user fsuid=ec2-user egid=ec2-user sgid=ec2-user fsgid=ec2-user tty=pts0 ses=104 comm=cat exe=/usr/bin/cat key=my_rule 
+----
+type=PROCTITLE msg=audit(04/13/22 02:26:27.178:125890) : proctitle=rm hello.txt 
+type=PATH msg=audit(04/13/22 02:26:27.178:125890) : item=1 name=hello.txt inode=12591969 dev=ca:01 mode=file,664 ouid=ec2-user ogid=ec2-user rdev=00:00 nametype=DELETE cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=PATH msg=audit(04/13/22 02:26:27.178:125890) : item=0 name=/home/ec2-user inode=13261880 dev=ca:01 mode=dir,700 ouid=ec2-user ogid=ec2-user rdev=00:00 nametype=PARENT cap_fp=none cap_fi=none cap_fe=0 cap_fver=0 cap_frootid=0 
+type=CWD msg=audit(04/13/22 02:26:27.178:125890) : cwd=/home/ec2-user 
+type=SYSCALL msg=audit(04/13/22 02:26:27.178:125890) : arch=x86_64 syscall=unlinkat success=yes exit=0 a0=0xffffff9c a1=0x12ce290 a2=0x0 a3=0x166 items=2 ppid=1062 pid=1095 auid=ec2-user uid=ec2-user gid=ec2-user euid=ec2-user suid=ec2-user fsuid=ec2-user egid=ec2-user sgid=ec2-user fsgid=ec2-user tty=pts0 ses=104 comm=rm exe=/usr/bin/rm key=my_rule 
+----
+type=PROCTITLE msg=audit(04/13/22 02:26:30.190:125895) : proctitle=auditctl -D 
+type=SOCKADDR msg=audit(04/13/22 02:26:30.190:125895) : saddr={ fam=netlink nlnk-fam=16 nlnk-pid=0 } 
+type=SYSCALL msg=audit(04/13/22 02:26:30.190:125895) : arch=x86_64 syscall=sendto success=yes exit=1080 a0=0x3 a1=0x7ffe5432b3b0 a2=0x438 a3=0x0 items=0 ppid=1096 pid=1097 auid=ec2-user uid=root gid=root euid=root suid=root fsuid=root egid=root sgid=root fsgid=root tty=pts0 ses=104 comm=auditctl exe=/usr/sbin/auditctl key=(null) 
+type=CONFIG_CHANGE msg=audit(04/13/22 02:26:30.190:125895) : auid=ec2-user ses=104 op=remove_rule key=my_rule list=exit res=yes 
 ```
 
 
