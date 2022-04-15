@@ -6,7 +6,7 @@ title: Takahiro Itazuri's Homepage
 
 Cloud Support Engineer @ Amazon Web Services Japan G.K.
 - Premium technical support for AWS services (especially EC2, EBS, Linux).
-- Subject Matter Expert (SME) of AWS internal accreditation on EC2 Core.
+- [EC2 Core Subject Matter Expert (SME)](https://www.credly.com/badges/8c7a45f3-0d7c-437e-a4b1-954ce17f911c/public_url).
 - Hiring and training other support engineers.
 - Maintainer of softwares.
 	- [dynein (DynamoDB CLI written in Rust)](https://github.com/awslabs/dynein)
@@ -48,7 +48,7 @@ Cloud Support Engineer @ Amazon Web Services Japan G.K.
 ## Biography
 #### 2021.09 - Present &nbsp; Cloud Support Engineer II @ Amazon Web Services Japan G.K.
 - Premium technical support for AWS services (EC2, EBS, Linux, ElastiCache, EFS, etc...).
-- Subject Matter Expert (SME) of AWS internal accreditation on EC2 Core.
+- [EC2 Core Subject Matter Expert (SME)](https://www.credly.com/badges/8c7a45f3-0d7c-437e-a4b1-954ce17f911c/public_url).
 - Hiring and training other support engineers.
 - Maintainer of softwares.
 	- [dynein (DynamoDB CLI written in Rust)](https://github.com/awslabs/dynein)
@@ -56,7 +56,7 @@ Cloud Support Engineer @ Amazon Web Services Japan G.K.
 
 #### 2020.06 - 2021.09 &nbsp; Cloud Support Engineer I @ Amazon Web Services Japan G.K.
 - Premium technical support for AWS services (EC2, EBS, Linux, ElastiCache, EFS, etc...).
-- Subject Matter Expert (SME) of AWS internal accreditation on EC2 Core.
+- [EC2 Core Subject Matter Expert (SME)](https://www.credly.com/badges/8c7a45f3-0d7c-437e-a4b1-954ce17f911c/public_url).
 
 #### 2019.08 - 2020.05 &nbsp; Cloud Support Associate II @ Amazon Web Services Japan G.K.
 - Premium technical support for AWS services (EC2, EBS, Linux, ElastiCache, EFS, etc...).
