@@ -102,7 +102,7 @@ title: x86 Assembly
 	├─────────────────┼─────────────────────────────┤
 	│ 8(n-6)+16(%rbp) │ n-th 8-byte memory argument │
 	└─────────────────┴─────────────────────────────┘
-	
+
 	1st argument: RDI
 	2nd argument: RSI
 	3rd argument: RDX
@@ -114,6 +114,7 @@ title: x86 Assembly
 
 
 ## Intel syntax vs. AT&T syntax
+
 |                   | Intel                     | AT&T                       |
 | ----------------- | ------------------------- | -------------------------- |
 | Comments          | Header                    | Title                      |
