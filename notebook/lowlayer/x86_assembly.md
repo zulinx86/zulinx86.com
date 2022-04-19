@@ -117,7 +117,6 @@ title: x86 Assembly
 
 |                   | Intel                     | AT&T                       |
 | ----------------- | ------------------------- | -------------------------- |
-| Comments          | Header                    | Title                      |
 | Immediates        | no prefix                 | prefixed with `$`          |
 | Registers         | no prefix                 | prefixed with `%`          |
 | Operands Order    | `instr dst, src`          | `instr src, dst`           |
