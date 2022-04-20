@@ -154,6 +154,15 @@ title: x86 Assembly
 		- `resq`: reserve in quad word
 	- `equ`: define constants
 	- `times`: repeat instructions or data
+- Constants
+	- Numeric constants
+		- Binary: `0bXXXX`, `XXXXb`
+		- Octal: `0oXXXX`, `XXXXo`
+		- Decimal: `XXXX`, `0dXXXX`, `XXXXd`
+		- Hexadecimal: `0xXXXX`, `XXXXh`
+	- String constants
+		- `db 'hello'`
+		- `db 'h','e','l','l','o'`
 - Expressions
 	- `$`: the assembly position at the beginning of the line containing the expression.
 	- `$$`: the beginning of the current section. (`$-$$`: how far into the section you are)
@@ -174,6 +183,26 @@ title: x86 Assembly
 			%define __SECT__ [section xyz]
 			        [section xyz]
 			```
+- Local labels
+	- A label beginning with a single period `.` is treated as a local label and it is associated with the previous non-local label.
+		```
+		label1:
+			; some code
+		.loop:			; associated with label1
+			; some more code
+			jne .loop	; jump to label1.loop
+			ret
+
+		label2:
+			; some code
+		.loop:			; associated with label2
+			; some more code
+			jne .loop	; jump to label2.loop
+
+		label3:
+			; some code
+			jmp label1.loop
+		```
 - Output formats
 	- `bin`: flat-form binary output
 		- 16-bit mode is default in NASM. In order to write 32 or 64 bit code, you need to explicitly issue the `bits 32` or `bits 64` directive.
