@@ -10,6 +10,7 @@ title: Table of Contents
 	- [Tracing](https://zulinx86.com/notebook/linux/tracing)
 - Kernel
 	- [Environment for Kernel Development on Amazon Linux 2](https://zulinx86.com/notebook/kernel/environment)
+	- [FUSE](https://zulinx86.com/notebook/kernel/fuse)
 - Model of Computation
 	- [Deterministic Finite Automaton](https://zulinx86.com/notebook/model_of_computation/deterministic_finite_automaton)
 	- [Turing Machine](https://zulinx86.com/notebook/model_of_computation/turing_machine)
