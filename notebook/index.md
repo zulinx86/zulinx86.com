@@ -16,3 +16,4 @@ title: Table of Contents
 	- [Turing Machine](https://zulinx86.com/notebook/model_of_computation/turing_machine)
 - Misc
 	- [Cython](https://zulinx86.com/notebook/misc/cython)
+	- [Hash](https://zulinx86.com/notebook/misc/hash)
