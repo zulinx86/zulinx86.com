@@ -51,6 +51,21 @@ title: PIC (Programmable Interrupt Controller)
 	- IRQ13: coprocessor
 	- IRQ14: primary IDE controller
 	- IRQ15: secondary IDE controller
+- I/O Ports
+	- Primary PIC
+		- Command: 0x20
+			- Read: IRR/ISR
+			- Write: ICW1/OCW2,OCW3
+		- Data: 0x21
+			- Read: IMR
+			- Write: ICW2,ICW3,ICW4/OCW1
+	- Secondary PIC
+		- Command: 0xA0
+			- Read: IRR/ISR
+			- Write: ICW1/OCW2,OCW3
+		- Data: 0xA1
+			- Read: IMR
+			- Write: ICW2,ICW3,ICW4/OCW1s
 
 
 ### Pin Diagram
@@ -335,6 +350,84 @@ Secondary PIC
 - Level trigger mode
 	- An interrupt request will be recognized by a high level on IR pin, and there is no need for an edge detection.
 	- The interrupt request must be removed before the EOI command is issued or the CPU interrupts is enabled to prevent a second interrupt from occurring.
+
+
+### Code Examples
+Common Definition
+```c
+#define PIC0				(0x20)
+#define PIC0_COMM			(PIC0)
+#define PIC0_DATA			(PIC0 + 1)
+#define PIC1				(0xA0)
+#define PIC1_COMM			(PIC1)
+#define PIC1_DATA			(PIC1 + 1)
+```
+
+Initialization
+```c
+#define ICW1_ICW4			(0b00000001)
+#define ICW1_SNGL			(0b00000010)
+#define ICW1_INT4			(0b00000100)
+#define ICW1_LTIM			(0b00001000)
+#define ICW1_INIT			(0b00010000)
+
+#define ICW2_MASTER_OFFSET	(0x20)
+#define ICW2_SLAVE_OFFSET	(0x28)
+
+#define ICW3_SLAVE_IRQ		2
+
+#define ICW4_8086			(0b00000001)
+#define ICW4_AUTO			(0b00000010)
+#define ICW4_BUF_SLAVE		(0b00001000)
+#define ICW4_BUF_MASTER		(0b00001100)
+#define ICW4_SFNM			(0b00010000)
+
+#define PIC0_IMR			(0b11111011)
+#define PIC1_IMR			(0x11111111)
+
+void pic_init()
+{
+	outb(PIC0_COMM, ICW1_INIT | ICW1_ICW4);
+	outb(PIC0_DATA, ICW2_MASTER_OFFSET);
+	outb(PIC0_DATA, 1 << ICW3_SLAVE_IRQ);
+	outb(PIC0_DATA, ICW4_8086);
+
+	outb(PIC1_COMM, ICW1_INIT | ICW1_ICW4);
+	outb(PIC1_DATA, ICW2_SLAVE_OFFSET);
+	outb(PIC1_DATA, ICW3_SLAVE_IRQ);
+	outb(PIC1_DATA, ICW4_8086);
+
+	outb(PIC0_DATA, PIC0_IMR);
+	outb(PIC1_DATA, PIC1_IMR);
+}
+```
+
+Non-Specific EOI
+```c
+#define OCW2_EOI	0x20
+
+void pic_send_eoi(unsigned char irq)
+{
+	if (irq >= 8)
+		outb(PIC1_COMM, OCW2_EOI);
+	outb(PIC0_COMM, OCW2_EOI);
+}
+```
+
+Specific EOI
+```c
+#define OCW2_EOI	0x60
+
+void pic_send_eoi(unsigned char irq)
+{
+	if (irq >= 8) {
+		outb(PIC1_COMM, OCW2_EOI | (irq - 0x08));
+		outb(PIC0_COMM, OCW2_EOI | ICW3_SLAVE_IRQ);
+	} else {
+		outb(PIC0_COMM, OCW2_EOI | irq);
+	}
+}
+```
 
 
 ### Links
