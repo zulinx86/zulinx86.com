@@ -311,3 +311,4 @@ Hello, world!
 - [System V Application Binary Interface Intel386 Architecture Processor Supplement](https://www.uclibc.org/docs/psABI-i386.pdf)
 - [System V Application Binary Interface AMD64 Architecture Processor Supplement](https://www.uclibc.org/docs/psABI-x86_64.pdf)
 - [NASM Manual](https://www.csie.ntu.edu.tw/~comp03/nasm/nasmdoc0.html)
+	- [NASM Manual - x86 Instruction Reference](https://cs.fit.edu/~mmahoney/cse3101/nasmdocb.html)
