@@ -5,6 +5,7 @@ title: Table of Contents
 
 - Lower Layer
 	- [x86 Assembly](https://zulinx86.com/notebook/lowlayer/x86_assembly)
+	- [PIC](https://zulinx86.com/notebook/lowlayer/pic)
 - Linux
 	- [Audit](https://zulinx86.com/notebook/linux/audit)
 	- [Tracing](https://zulinx86.com/notebook/linux/tracing)
