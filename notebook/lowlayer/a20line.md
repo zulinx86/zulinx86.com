@@ -105,7 +105,7 @@ wait_kbc_in:
 
 
 wait_kbc_out:
-	int al,kbc_stat
+	in al,kbc_stat
 	test al,2
 	jnz wait_kbc_out
 	ret
