@@ -134,7 +134,7 @@ GATE0|11   14|GATE1
 		<th>Description</th>
 	</tr>
 	<tr>
-		<td>6 & 7</td>
+		<td>7 & 6</td>
 		<td>
 			Select channel:<br>
 			0 0 = channel 0<br>
@@ -144,7 +144,7 @@ GATE0|11   14|GATE1
 		</td>
 	</tr>
 	<tr>
-		<td>4 & 5</td>
+		<td>5 & 4</td>
 		<td>
 			Access mode:<br>
 			0 0 = latch count value command<br>
@@ -154,7 +154,7 @@ GATE0|11   14|GATE1
 		</td>
 	</tr>
 	<tr>
-		<td>1 & 2 & 3</td>
+		<td>3 & 2 & 1</td>
 		<td>
 			Operating mode:<br>
 			0 0 0 = mode 0 (interrupt on terminal count)<br>
