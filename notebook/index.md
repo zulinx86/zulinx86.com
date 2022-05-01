@@ -8,6 +8,7 @@ title: Table of Contents
 	- [BIOS](https://zulinx86.com/notebook/lowlayer/bios)
 	- [PIC](https://zulinx86.com/notebook/lowlayer/pic)
 	- [A20 Line](https://zulinx86.com/notebook/lowlayer/a20line)
+	- [PIT](https://zulinx86.com/notebook/lowlayer/pit)
 - Linux
 	- [Audit](https://zulinx86.com/notebook/linux/audit)
 	- [Tracing](https://zulinx86.com/notebook/linux/tracing)
