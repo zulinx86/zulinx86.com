@@ -9,6 +9,7 @@ title: Table of Contents
 	- [PIC](https://zulinx86.com/notebook/lowlayer/pic)
 	- [A20 Line](https://zulinx86.com/notebook/lowlayer/a20line)
 	- [PIT](https://zulinx86.com/notebook/lowlayer/pit)
+	- [VGA](https://zulinx86.com/notebook/lowlayer/vga)
 - Linux
 	- [Audit](https://zulinx86.com/notebook/linux/audit)
 	- [Tracing](https://zulinx86.com/notebook/linux/tracing)
