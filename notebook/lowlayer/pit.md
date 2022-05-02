@@ -47,42 +47,92 @@ GATE0|11   14|GATE1
   GND|12   13|OUT1
      +-------+
 ```
-- D0-D7: Data
-	- Bi-directional three state data bus lines, connected to system data bus.
-- CLK0: Clock 0
-	- Clock input of counter 0.
-- OUT0: Output 0
-	- Output of counter 0.
-- GATE0: Gate 0
-	- Gate input of counter 0.
-- GND: Ground
-	- Power supply connection.
-- OUT1: Output 1
-	- Output of counter 1.
-- GATE1: Gate 1
-	- Gate input of counter 1.
-- CLK1: Clock 1
-	- Clock input of counter 1.
-- GATE2: Gate 2
-	- Gate input of counter 2.
-- OUT2: Output 2
-	- Output of counter 2.
-- CLK2: Clock 2
-	- Clock input of counter 2.
-- A0, A1: Address
-	- Used to select of the three counters or the control word register for read/write operations.
-	- 0 & 0: counter 0
-	- 0 & 1: counter 1
-	- 1 & 0: counter 2
-	- 1 & 1: control word register
-- -CS: Chip select
-	- A low on this input enables the PIT to responds to -RD and -WR signals.
-- -RD: Read control
-	- This input is low during CPU read operations.
-- -WR: Write control
-	- This input is low during CPU write operations.
-- VCC: Power
-	- +5V power supply connection.
+
+<table>
+	<tr>
+		<th>Pin</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>D7-D0</td>
+		<td>Bi-directional three state data bus lines, connected to system data bus.</td>
+	</tr>
+	<tr>
+		<td>CLK0</td>
+		<td>Clock input of counter 0.</td>
+	</tr>
+	<tr>
+		<td>OUT0</td>
+		<td>Output of counter 0.</td>
+	</tr>
+	<tr>
+		<td>GATE0</td>
+		<td>Gate input of counter 0.</td>
+	</tr>
+	<tr>
+		<td>GND</td>
+		<td>Ground</td>
+	</tr>
+	<tr>
+		<td>OUT1</td>
+		<td>Output of counter 1.</td>
+	</tr>
+	<tr>
+		<td>GATE1</td>
+		<td>Gate input of counter 1.</td>
+	</tr>
+	<tr>
+		<td>CLK1</td>
+		<td>Clock input of counter 1.</td>
+	</tr>
+	<tr>
+		<td>GATE2</td>
+		<td>Gate input of counter 2.</td>
+	</tr>
+	<tr>
+		<td>OUT2</td>
+		<td>Output of counter 2.</td>
+	</tr>
+	<tr>
+		<td>CLK2</td>
+		<td>Clock input of counter 2.</td>
+	</tr>
+	<tr>
+		<td>A1 & A0</td>
+		<td>
+			Used to select of the three counters or the control word register for read/write operations.<br>
+			0 & 0: counter 0<br>
+			0 & 1: counter 1<br>
+			1 & 0: counter 2<br>
+			1 & 1: control word register
+		</td>
+	</tr>
+	<tr>
+		<td>-CS</td>
+		<td>
+			Chip select<br>
+			A low on this input enables the PIT to responds to -RD and -WR signals.
+		</td>
+	</tr>
+	<tr>
+		<td>-RD</td>
+		<td>
+			Read<br>
+			This input is low during CPU read operations.
+		</td>
+	</tr>
+	<tr>
+		<td>-WR</td>
+		<td>
+			Write<br>
+			This input is low during CPU write operations.
+		</td>
+	</tr>
+	<tr>
+		<td>VCC</td>
+		<td>Power supply</td>
+	</tr>
+</table>
 
 
 ### Block Diagram
@@ -210,3 +260,4 @@ GATE0|11   14|GATE1
 - [Programmable interval timer - Wikipedia](https://en.wikipedia.org/wiki/Programmable_interval_timer)
 - [Intel 8253 - Wikipedia](https://en.wikipedia.org/wiki/Intel_8253)
 - [Programmable Interval Timer - OSDev Wiki](https://wiki.osdev.org/Programmable_Interval_Timer)
+- [8254 PROGRAMMABLE INTERVAL TIMER](https://www.scs.stanford.edu/10wi-cs140/pintos/specs/8254.pdf)
