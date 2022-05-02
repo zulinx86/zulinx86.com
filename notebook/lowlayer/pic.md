@@ -51,21 +51,23 @@ title: PIC (Programmable Interrupt Controller)
 	- IRQ13: coprocessor
 	- IRQ14: primary IDE controller
 	- IRQ15: secondary IDE controller
-- I/O Ports
-	- Primary PIC
-		- Command: 0x20
-			- Read: IRR/ISR
-			- Write: ICW1/OCW2,OCW3
-		- Data: 0x21
-			- Read: IMR
-			- Write: ICW2,ICW3,ICW4/OCW1
-	- Secondary PIC
-		- Command: 0xA0
-			- Read: IRR/ISR
-			- Write: ICW1/OCW2,OCW3
-		- Data: 0xA1
-			- Read: IMR
-			- Write: ICW2,ICW3,ICW4/OCW1s
+
+
+### I/O Ports
+#### Primary PIC
+
+| I/O Port | Read    | Write               |
+| -------- | ------- | ------------------- |
+| 0x20     | IRR/ISR | ICW1/OCW2,OCW3      |
+| 0x21     | IMR     | ICW2,ICW3,ICW4/OCW1 |
+
+#### Secondary PIC
+
+| I/O Port | Read    | Write               |
+| -------- | ------- | ------------------- |
+| 0xA0     | IRR/ISR | ICW1/OCW2,OCW3      |
+| 0xA1     | IMR     | ICW2,ICW3,ICW4/OCW1 |
+
 
 
 ### Pin Diagram
@@ -87,31 +89,87 @@ title: PIC (Programmable Interrupt Controller)
   GND|14   15|CAS2
      +-------+
 ```
-- VCC: power supply
-- GND: ground
-- CS: chip select
-	- A low on this pin enabled RD and WR communication between the CPU and the 8259A.
-- WR: write
-	- A low on this pin when CS is low enables the 8259A to accept command words from the CPU.
-- RD: read
-	- A low on this pin when CS is low enables the 8259A to release status onto the data bus for the CPU.
-- D0-D7: bidirectional data bus
-	- Control, status and interrupt-vector information is transferred via this bus.
-- CAS0-CAS2: cancade lines
-- SP/EN: secondary program / enable buffer
-	- In non-buffered mode, it is used to specify whether it works as primary or secondary. (high: primary, low: secondary)
-	- In buffered mode, it is used as an output to enable data bus.
-- INT: interrupt pin
-	- This pin goes high whenever a valid interrupt request is asserted.
-	- It is used to interrupt the CPU, thus it is connected to the CPU's interrupt pin (INTR).
-- IR0-IR7: interrupt request lines
-	- An interrupt request is executed by raising an IR input (low to high), and holding it high until it is acknolwedged (edge triggered mode) or just by a high level on an IR input (level triggered mode).
-- INTA: interrupt acknowledge
-	- This pin is used to enable the 8259A interrupt-vector data onto the data bus by a sequence of interrupt acknowledge pulses issued by the CPU.
-- A0: A0 address line
-	- This pin acts in conjunction with the CS, WR and RD pins.
-	- It is used by the 8259A to decipher various command words the CPU writes and status the CPU wishes to read.
-	- It is typically connected to the CPU A0 address line. (A1 for 8086, 8088).
+
+<table>
+	<tr>
+		<th>Pin</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>-CS</td>
+		<td>
+			Chip select:<br>
+			A low on this pin enables -RD and -WR communication between the CPU and the PIC.
+		</td>
+	</tr>
+	<tr>
+		<td>-WR</td>
+		<td>
+			Write:<br>
+			A low on this pin enables the PIC to accept command words from the CPU.
+		</td>
+	</tr>
+	<tr>
+		<td>-RD</td>
+		<td>
+			Read:<br>
+			A low on this pin enables the PIC to release status onto the data bus for the CPU.
+		</td>
+	</tr>
+	<tr>
+		<td>D7-D0</td>
+		<td>Bi-directional data bus</td>
+	</tr>
+	<tr>
+		<td>CAS0-CAS2</td>
+		<td>Cascade lines</td>
+	</tr>
+	<tr>
+		<td>GND</td>
+		<td>Ground</td>
+	</tr>
+	<tr>
+		<td>-SP/-EN</td>
+		<td>
+			Secondary program / Enable buffer:<br>
+			In non-buffered mode, it is used to specify whether it works as primary (high) or secondary (low).<br>
+			In buffered mode, it is used as an output to enable data bus.
+		</td>
+	</tr>
+	<tr>
+		<td>INT</td>
+		<td>
+			Interrupt pin:<br>
+			It is used to interrupt the CPU, thus it is connected to the CPU's interrupt pin (INTR).
+		</td>
+	</tr>
+	<tr>
+		<td>IR0-IR7</td>
+		<td>
+			Interrupt request lines:<br>
+			An interrupt request is executed by raising an IR input (low to high), and holding it high until it is acknolwedged (edge triggered mode) or just by a high level on an IR input (level triggered mode).
+		</td>
+	</tr>
+	<tr>
+		<td>-INTA</td>
+		<td>
+			Interrupt acknowledge:<br>
+			This pin is used to enable the 8259A interrupt-vector data onto the data bus by a sequence of interrupt acknowledge pulses issued by the CPU.
+		</td>
+	</tr>
+	<tr>
+		<td>A0</td>
+		<td>
+			A0 address line:<br>
+			This pin acts in conjunction with the CS, WR and RD pins.<br>
+			It is used by the 8259A to decipher various command words the CPU writes and status the CPU wishes to read.
+		</td>
+	</tr>
+	<tr>
+		<td>VCC</td>
+		<td>Power supply</td>
+	</tr>
+</table>
 
 
 ### Block Diagram
@@ -119,8 +177,8 @@ title: PIC (Programmable Interrupt Controller)
                                Internal Bus
              +-----------------+    |     +-----------------+
     D0-D7 <=>| Data Bus Buffer |<==>|     |  Control Logic  |<- -INTA
-             +-----------------+    |     |                 |-> INT
-                                  +-|-----+-----------------+
+             +-----------------+  +-|-----+                 |-> INT
+                                  | |     +-----------------+
                                   | |      |       |       ^
                                   | |---------------------------
              +-----------------+  | |    ^ |       |       |  ^
@@ -215,18 +273,45 @@ title: PIC (Programmable Interrupt Controller)
 |  0  |  0  |  0  |  1  |LTIM | ADI |SNGL | IC4 |
 +-----+-----+-----+-----+-----+-----+-----+-----+
 ```
-- `LTIM` (Level Triggered Interrupt Mode)
-	- 0: Edge triggered interrupt mode
-	- 1: Level triggered interrupt mode
-- `ADI` (Address Interval)
-	- 0: Interval = 8
-	- 1: Interval = 4
-- `SNGL` (Single)
-	- 0: Cascading mode
-	- 1: Single mode (no ICW3 will be issued)
-- `IC4`
-	- 0: ICW4 is not needed
-	- 1: ICW4 is needed
+
+<table>
+	<tr>
+		<th>Bit</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>LTIM</td>
+		<td>
+			Level Triggered Interrupt Mode<br>
+			0: Edge triggered interrupt mode<br>
+			1: Level triggered interrupt mode
+		</td>
+	</tr>
+	<tr>
+		<td>ADI</td>
+		<td>
+			Address Interval<br>
+			0: Interval = 8<br>
+			1: Interval = 4
+		</td>
+	</tr>
+	<tr>
+		<td>SNGL</td>
+		<td>
+			Single<br>
+			0: Cascading mode<br>
+			1: Single mode (no ICW3 will be issued)
+		</td>
+	</tr>
+	<tr>
+		<td>IC4</td>
+		<td>
+			ICW4<br>
+			0: ICW4 is not needed<br>
+			1: ICW4 is needed
+		</td>
+	</tr>
+</table>
 
 #### ICW2
 ```
@@ -235,7 +320,17 @@ title: PIC (Programmable Interrupt Controller)
 | T7  | T6  | T5  | T4  | T3  |  0  |  0  |  0  |
 +-----+-----+-----+-----+-----+-----+-----+-----+
 ```
-- `T[3:7]`: Interrupt vector address
+
+<table>
+	<tr>
+		<th>Bit</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>T7-T3</td>
+		<td>Interrupt vector address</td>
+	</tr>
+</table>
 
 #### ICW3
 ```
@@ -251,7 +346,7 @@ Secondary PIC
 |  0  |  0  |  0  |  0  |  0  | ID2 | ID1 | ID0 |
 +-----+-----+-----+-----+-----+-----+-----+-----+
 ```
-- In cascading mode (`SNGL` is set to 0 in ICW1), it will load the 8-bit register.
+- In cascading mode (SNGL is set to 0 in ICW1), it will load the 8-bit register.
 	- Primary PIC
 		- 0: IR pin does not have a secondary PIC.
 		- 1: IR pin has a secondary PIC.
@@ -265,19 +360,43 @@ Secondary PIC
 |  0  |  0  |  0  |SFNM | BUF | M/S |AEOI | uPM |
 +-----+-----+-----+-----+-----+-----+-----+-----+
 ```
-- SFNM (Special Fully Nested Mode)
-	- 0: Not special fully nested mode
-	- 1: Special fully nested mode
-- BUF & M/S
-	- 0 & X: Non-buffered mode
-	- 1 & 0: Buffered mode / Secondary
-	- 1 & 1: Buffered mode / Primary
-- AEOI
-	- 0: Normal EOI
-	- 1: Auto EOI
-- uPM
-	- 0: MCS-80/85 mode
-	- 1: 8086/8088 mode
+
+<table>
+	<tr>
+		<th>Bit</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>SFNM</td>
+		<td>
+			Special Fully Nested Mode<br>
+			0: Not special fully nested mode<br>
+			1: Special fully nested mode
+		</td>
+	</tr>
+	<tr>
+		<td>BUF & M/S</td>
+		<td>
+			0 & X: Non-buffered mode<br>
+			1 & 0: Buffered mode / Secondary<br>
+			1 & 1: Buffered mode / Primary
+		</td>
+	</tr>
+	<tr>
+		<td>AEOI</td>
+		<td>
+			0: Normal EOI<br>
+			1: Auto EOI
+		</td>
+	</tr>
+	<tr>
+		<td>uPM</td>
+		<td>
+			0: MCS-80/85 mode<br>
+			1: 8086/8088 mode
+		</td>
+	</tr>
+</table>
 
 
 ### OCWs (Operation Command Words)
@@ -289,9 +408,20 @@ Secondary PIC
 +-----+-----+-----+-----+-----+-----+-----+-----+
 ```
 - OCW1 sets and clears the mask bits in the IMR.
-- M0-M7
-	- 0: Indicates the interrupt is enabled.
-	- 1: Indicates the interrupt is masked.
+
+<table>
+	<tr>
+		<th>Bit</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>M7-M0</td>
+		<td>
+			0: Indicates the interrupt is enabled.<br>
+			1: Indicates the interrupt is masked.
+		</td>
+	</tr>
+</table>
 
 #### OCW2
 ```
@@ -300,16 +430,30 @@ Secondary PIC
 |  R  | SL  | EOI |  0  |  0  | L2  | L1  | L0  |
 +-----+-----+-----+-----+-----+-----+-----+-----+
 ```
-- R & SL & EOI
-	- 0 & 0 & 1: Non-specific EOI
-	- 0 & 1 & 1: Specific EOI
-	- 1 & 0 & 1: Rotate on non-specific EOI
-	- 1 & 0 & 0: Rotate in Auto EOI mode (set)
-	- 0 & 0 & 0: Rotate in Auto EOI mode (clear)
-	- 1 & 1 & 1: Rotate on specific EOI
-	- 1 & 1 & 0: Set priority
-	- 0 & 1 & 0: No operation
-- L0-L2: IR pin to be acted upon
+
+<table>
+	<tr>
+		<th>Bit</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>R & SL & EOI</td>
+		<td>
+			0 & 0 & 1: Non-specific EOI<br>
+			0 & 1 & 1: Specific EOI<br>
+			1 & 0 & 1: Rotate on non-specific EOI<br>
+			1 & 0 & 0: Rotate in Auto EOI mode (set)<br>
+			0 & 0 & 0: Rotate in Auto EOI mode (clear)<br>
+			1 & 1 & 1: Rotate on specific EOI<br>
+			1 & 1 & 0: Set priority<br>
+			0 & 1 & 0: No operation
+		</td>
+	</tr>
+	<tr>
+		<td>L2-L0</td>
+		<td>IR pin to be acted upon</td>
+	</tr>
+</table>
 
 #### OCW3
 ```
@@ -318,19 +462,46 @@ Secondary PIC
 |  0  |ESMM | SMM |  0  |  1  |  P  | RR  | RIS  |
 +-----+-----+-----+-----+-----+-----+-----+-----+
 ```
-- ESMM (Enable Speciak Mask Mode)
-	- 0: SMM bit becomes a "don't care'.
-	- 1: It enables the SMM bit to set or reset the special mask mode.
-- SMM (Special Mask Mode)
-	- 0: It will revert to normal mask mode.
-	- 1: It will enter special mask mode.
-- P (Poll)
-	- 0: No poll
-	- 1: Poll
-- RR (Read Register) & RIS (Register)
-	- 0 & X: No action
-	- 1 & 0: Read IRR
-	- 1 & 1: Read ISR
+
+<table>
+	<tr>
+		<th>Bit</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td>ESMM</td>
+		<td>
+			Enable Speciak Mask Mode<br>
+			0: SMM bit becomes a "don't care'.<br>
+			1: It enables the SMM bit to set or reset the special mask mode.
+		</td>
+	</tr>
+	<tr>
+		<td>SMM</td>
+		<td>
+			Special Mask Mode<br>
+			0: It will revert to normal mask mode.<br>
+			1: It will enter special mask mode.
+		</td>
+	</tr>
+	<tr>
+		<td>P</td>
+		<td>
+			Poll<br>
+			0: No poll<br>
+			1: Poll
+		</td>
+	</tr>
+	<tr>
+		<td>RR & RIS</td>
+		<td>
+			Read Register & Register<br>
+			0 & X: No action<br>
+			1 & 0: Read IRR<br>
+			1 & 1: Read ISR
+		</td>
+	</tr>
+</table>
 
 
 ### EOI (End Of Interrupt)
