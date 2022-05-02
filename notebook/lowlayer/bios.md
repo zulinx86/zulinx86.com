@@ -8,7 +8,8 @@ title: BIOS (Basic Input/Output System)
 ### AH = 0x00 - Set Video Mode
 - Parameters
 	- AL = video mode
-		- 0x13: 320x200 256 colors graphics (VGA)
+    	- 0x12: 640x480 16 color graphics (VGA)
+		- 0x13: 320x200 256 color graphics (VGA)
 
 
 ### AH = 0x0e - Write Text in Teletype Mode
@@ -65,4 +66,3 @@ title: BIOS (Basic Input/Output System)
 
 ## Links
 - [Interrupt Services DOS/BIOS/EMS/Mouse](https://stanislavs.org/helppc/idx_interrupt.html)
-- [Interrupt Jump Table](http://www.ctyme.com/intr/int.htm)
