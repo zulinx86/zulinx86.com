@@ -21,6 +21,7 @@ title: Programmable Interval Timer (PIT)
 
 
 ### I/O Ports
+
 | I/O port | Description                                        |
 | -------- | -------------------------------------------------- |
 | 0x40     | Channel 0 data port (read/write)                   |
