@@ -14,6 +14,7 @@ title: Table of Contents
 	- [Assembly](https://zulinx86.com/notebook/x86_64/assembly)
 	- [Mode](https://zulinx86.com/notebook/x86_64/mode)
 	- [Multitaslking](https://zulinx86.com/notebook/x86_64/multitasking)
+	- [Privilege Levels](https://zulinx86.com/notebook/x86_64/privilege_levels)
 - Linux
 	- [Audit](https://zulinx86.com/notebook/linux/audit)
 	- [Tracing](https://zulinx86.com/notebook/linux/tracing)
