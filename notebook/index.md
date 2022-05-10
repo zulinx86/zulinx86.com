@@ -13,6 +13,7 @@ title: Table of Contents
 - x86_64
 	- [Assembly](https://zulinx86.com/notebook/x86_64/assembly)
 	- [Mode](https://zulinx86.com/notebook/x86_64/mode)
+	- [Multitaslking](https://zulinx86.com/notebook/x86_64/multitasking)
 - Linux
 	- [Audit](https://zulinx86.com/notebook/linux/audit)
 	- [Tracing](https://zulinx86.com/notebook/linux/tracing)
