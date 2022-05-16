@@ -241,12 +241,32 @@ ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsysca
 - As explained in the comment, `__MAP()` apply a macro to given args.
 - `__MAP(n, m, t1, a1, t2, a2, ..., tn, an)` will be expanded to `m(t1,a1), m(t2,a2), ..., m(tn,an)`.
 
+[https://elixir.bootlin.com/linux/latest/source/include/linux/syscalls.h#L119](https://elixir.bootlin.com/linux/latest/source/include/linux/syscalls.h#L119)
 ```c
 #define __SC_DECL(t, a)	t a
+#define __TYPE_AS(t, v)	__same_type((__force t)0, v)
 /* snipped */
 #define __TYPE_IS_LL(t) (__TYPE_AS(t, 0LL) || __TYPE_AS(t, 0ULL))
 #define __SC_LONG(t, a) __typeof(__builtin_choose_expr(__TYPE_IS_LL(t), 0LL, 0L)) a
+#define __SC_CAST(t, a)	(__force t) a
 ```
+
+[https://gcc.gnu.org/onlinedocs/gcc/Other-Builtins.html](https://gcc.gnu.org/onlinedocs/gcc/Other-Builtins.html)
+> Built-in Function: type __builtin_choose_expr (const_exp, exp1, exp2)
+> You can use the built-in function __builtin_choose_expr to evaluate code depending on the value of a constant expression. This built-in function returns exp1 if const_exp, which is an integer constant expression, is nonzero. Otherwise it returns exp2.
+> 
+> This built-in function is analogous to the ‘? :’ operator in C, except that the expression returned has its type unaltered by promotion rules. Also, the built-in function does not evaluate the expression that is not chosen. For example, if const_exp evaluates to true, exp2 is not evaluated even if it has side effects.
+
+[https://elixir.bootlin.com/linux/latest/source/include/linux/compiler_types.h#L287](https://elixir.bootlin.com/linux/latest/source/include/linux/compiler_types.h#L287)
+```c
+/* Are two types/vars the same type (ignoring qualifiers)? */
+#define __same_type(a, b) __builtin_types_compatible_p(typeof(a), typeof(b))
+```
+
+[https://gcc.gnu.org/onlinedocs/gcc/Other-Builtins.html](https://gcc.gnu.org/onlinedocs/gcc/Other-Builtins.html)
+> Built-in Function: int __builtin_types_compatible_p (type1, type2)
+> You can use the built-in function __builtin_types_compatible_p to determine whether two types are the same.
+
 - `static inline long __do_sys##name(__MAP(x,__SC_DECL,__VA_ARGS__));` will be expanded to `static inline long __do_sys##name(t1 a1, t2 a2, ..., tx ax);`.
 
 
@@ -345,6 +365,157 @@ ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsysca
 	{								\
 		return __se_##name(__VA_ARGS__);			\
 	}
+```
+
+[https://elixir.bootlin.com/linux/latest/source/arch/x86/include/asm/syscall_wrapper.h#L56](https://elixir.bootlin.com/linux/latest/source/arch/x86/include/asm/syscall_wrapper.h#L56)
+```c
+/*
+ * Instead of the generic __SYSCALL_DEFINEx() definition, the x86 version takes
+ * struct pt_regs *regs as the only argument of the syscall stub(s) named as:
+ * __x64_sys_*()         - 64-bit native syscall
+ * __ia32_sys_*()        - 32-bit native syscall or common compat syscall
+ * __ia32_compat_sys_*() - 32-bit compat syscall
+ * __x64_compat_sys_*()  - 64-bit X32 compat syscall
+ *
+ * The registers are decoded according to the ABI:
+ * 64-bit: RDI, RSI, RDX, R10, R8, R9
+ * 32-bit: EBX, ECX, EDX, ESI, EDI, EBP
+ *
+ * The stub then passes the decoded arguments to the __se_sys_*() wrapper to
+ * perform sign-extension (omitted for zero-argument syscalls).  Finally the
+ * arguments are passed to the __do_sys_*() function which is the actual
+ * syscall.  These wrappers are marked as inline so the compiler can optimize
+ * the functions where appropriate.
+ *
+ * Example assembly (slightly re-ordered for better readability):
+ *
+ * <__x64_sys_recv>:		<-- syscall with 4 parameters
+ *	callq	<__fentry__>
+ *
+ *	mov	0x70(%rdi),%rdi	<-- decode regs->di
+ *	mov	0x68(%rdi),%rsi	<-- decode regs->si
+ *	mov	0x60(%rdi),%rdx	<-- decode regs->dx
+ *	mov	0x38(%rdi),%rcx	<-- decode regs->r10
+ *
+ *	xor	%r9d,%r9d	<-- clear %r9
+ *	xor	%r8d,%r8d	<-- clear %r8
+ *
+ *	callq	__sys_recvfrom	<-- do the actual work in __sys_recvfrom()
+ *				    which takes 6 arguments
+ *
+ *	cltq			<-- extend return value to 64-bit
+ *	retq			<-- return
+ *
+ * This approach avoids leaking random user-provided register content down
+ * the call chain.
+ */
+
+/* Mapping of registers to parameters for syscalls on x86-64 and x32 */
+#define SC_X86_64_REGS_TO_ARGS(x, ...)					\
+	__MAP(x,__SC_ARGS						\
+		,,regs->di,,regs->si,,regs->dx				\
+		,,regs->r10,,regs->r8,,regs->r9)			\
+
+/* Mapping of registers to parameters for syscalls on i386 */
+#define SC_IA32_REGS_TO_ARGS(x, ...)					\
+	__MAP(x,__SC_ARGS						\
+	      ,,(unsigned int)regs->bx,,(unsigned int)regs->cx		\
+	      ,,(unsigned int)regs->dx,,(unsigned int)regs->si		\
+	      ,,(unsigned int)regs->di,,(unsigned int)regs->bp)
+```
+
+[https://elixir.bootlin.com/linux/latest/source/include/linux/syscalls.h#L126](https://elixir.bootlin.com/linux/latest/source/include/linux/syscalls.h#L126)
+```c
+#define __SC_ARGS(t, a)	a
+```
+
+[https://elixir.bootlin.com/linux/latest/source/arch/x86/include/asm/ptrace.h#L12](https://elixir.bootlin.com/linux/latest/source/arch/x86/include/asm/ptrace.h#L12)
+```c
+#ifdef __i386__
+
+struct pt_regs {
+	/*
+	 * NB: 32-bit x86 CPUs are inconsistent as what happens in the
+	 * following cases (where %seg represents a segment register):
+	 *
+	 * - pushl %seg: some do a 16-bit write and leave the high
+	 *   bits alone
+	 * - movl %seg, [mem]: some do a 16-bit write despite the movl
+	 * - IDT entry: some (e.g. 486) will leave the high bits of CS
+	 *   and (if applicable) SS undefined.
+	 *
+	 * Fortunately, x86-32 doesn't read the high bits on POP or IRET,
+	 * so we can just treat all of the segment registers as 16-bit
+	 * values.
+	 */
+	unsigned long bx;
+	unsigned long cx;
+	unsigned long dx;
+	unsigned long si;
+	unsigned long di;
+	unsigned long bp;
+	unsigned long ax;
+	unsigned short ds;
+	unsigned short __dsh;
+	unsigned short es;
+	unsigned short __esh;
+	unsigned short fs;
+	unsigned short __fsh;
+	/*
+	 * On interrupt, gs and __gsh store the vector number.  They never
+	 * store gs any more.
+	 */
+	unsigned short gs;
+	unsigned short __gsh;
+	/* On interrupt, this is the error code. */
+	unsigned long orig_ax;
+	unsigned long ip;
+	unsigned short cs;
+	unsigned short __csh;
+	unsigned long flags;
+	unsigned long sp;
+	unsigned short ss;
+	unsigned short __ssh;
+};
+
+#else /* __i386__ */
+
+struct pt_regs {
+/*
+ * C ABI says these regs are callee-preserved. They aren't saved on kernel entry
+ * unless syscall needs a complete, fully filled "struct pt_regs".
+ */
+	unsigned long r15;
+	unsigned long r14;
+	unsigned long r13;
+	unsigned long r12;
+	unsigned long bp;
+	unsigned long bx;
+/* These regs are callee-clobbered. Always saved on kernel entry. */
+	unsigned long r11;
+	unsigned long r10;
+	unsigned long r9;
+	unsigned long r8;
+	unsigned long ax;
+	unsigned long cx;
+	unsigned long dx;
+	unsigned long si;
+	unsigned long di;
+/*
+ * On syscall entry, this is syscall#. On CPU exception, this is error code.
+ * On hw interrupt, it's IRQ number:
+ */
+	unsigned long orig_ax;
+/* Return frame for iretq */
+	unsigned long ip;
+	unsigned long cs;
+	unsigned long flags;
+	unsigned long sp;
+	unsigned long ss;
+/* top of stack page */
+};
+
+#endif /* !__i386__ */
 ```
 
 - As it turns out, `__<abi>_sys_<name>()` -> `__se_sys_<name>()` -> `__do_sys_<name>()`.
