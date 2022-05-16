@@ -56,6 +56,7 @@ title: System Call
 	- vDSO (virtual Dynamic Shared Object)
 		- The vDSO's page appears as an ELF dynamic shared library at a randomized position to user space (ASLR: Address-Space Layout Randomization).
 	- As you can see below, vsyscall page is always mapped to the same position, but vDSO to different positions every execution.
+
 ```
 $ sudo cat /proc/self/maps
 ...
@@ -93,7 +94,7 @@ ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsysca
 
 ## Definition of System Calls
 ### `SYSCALL_DEFINEn()` except for `SYSCALL_DEFINE0()`
-https://elixir.bootlin.com/linux/latest/source/include/linux/syscalls.h#L217
+[https://elixir.bootlin.com/linux/latest/source/include/linux/syscalls.h#L217](https://elixir.bootlin.com/linux/latest/source/include/linux/syscalls.h#L217)
 ```c
 #define SYSCALL_DEFINE1(name, ...) SYSCALL_DEFINEx(1, _##name, __VA_ARGS__)
 #define SYSCALL_DEFINE2(name, ...) SYSCALL_DEFINEx(2, _##name, __VA_ARGS__)
@@ -113,7 +114,7 @@ https://elixir.bootlin.com/linux/latest/source/include/linux/syscalls.h#L217
 
 
 ### `SYSCALL_METADATA()`
-https://elixir.bootlin.com/linux/latest/source/include/linux/syscalls.h#L170
+[https://elixir.bootlin.com/linux/latest/source/include/linux/syscalls.h#L170](https://elixir.bootlin.com/linux/latest/source/include/linux/syscalls.h#L170)
 ```c
 #ifdef CONFIG_FTRACE_SYSCALLS
 /* snipped */
@@ -153,7 +154,7 @@ https://elixir.bootlin.com/linux/latest/source/include/linux/syscalls.h#L170
 
 
 ### `__SYSCALL_DEFINEx()`
-https://elixir.bootlin.com/linux/latest/source/arch/x86/include/asm/syscall_wrapper.h#L14
+[https://elixir.bootlin.com/linux/latest/source/arch/x86/include/asm/syscall_wrapper.h#L14](https://elixir.bootlin.com/linux/latest/source/arch/x86/include/asm/syscall_wrapper.h#L14)
 ```c
 /*
  * Instead of the generic __SYSCALL_DEFINEx() definition, the x86 version takes
@@ -197,7 +198,7 @@ https://elixir.bootlin.com/linux/latest/source/arch/x86/include/asm/syscall_wrap
  */
 ```
 
-https://elixir.bootlin.com/linux/latest/source/arch/x86/include/asm/syscall_wrapper.h#L228
+[https://elixir.bootlin.com/linux/latest/source/arch/x86/include/asm/syscall_wrapper.h#L228](https://elixir.bootlin.com/linux/latest/source/arch/x86/include/asm/syscall_wrapper.h#L228)
 ```c
 #define __SYSCALL_DEFINEx(x, name, ...)					\
 	static long __se_sys##name(__MAP(x,__SC_LONG,__VA_ARGS__));	\
@@ -217,7 +218,7 @@ https://elixir.bootlin.com/linux/latest/source/arch/x86/include/asm/syscall_wrap
 	- `static long static long __se_sys##name(__MAP(x,__SC_LONG,__VA_ARGS__));`
 	- `static inline long __do_sys##name(__MAP(x,__SC_DECL,__VA_ARGS__));`
 
-https://elixir.bootlin.com/linux/latest/source/include/linux/syscalls.h#L117
+[https://elixir.bootlin.com/linux/latest/source/include/linux/syscalls.h#L117](https://elixir.bootlin.com/linux/latest/source/include/linux/syscalls.h#L117)
 ```c
 /*
  * __MAP - apply a macro to syscall arguments
@@ -250,7 +251,7 @@ https://elixir.bootlin.com/linux/latest/source/include/linux/syscalls.h#L117
 
 
 ### `SYSCALL_DEFINE0()`
-https://elixir.bootlin.com/linux/latest/source/include/linux/syscalls.h#L209
+[https://elixir.bootlin.com/linux/latest/source/include/linux/syscalls.h#L209](https://elixir.bootlin.com/linux/latest/source/include/linux/syscalls.h#L209)
 ```c
 #ifndef SYSCALL_DEFINE0
 #define SYSCALL_DEFINE0(sname)					\
@@ -263,7 +264,7 @@ https://elixir.bootlin.com/linux/latest/source/include/linux/syscalls.h#L209
 - `SYSCALL_DEFINE0()` has the default implementation.
 - It might be overrided depending on its architecture. x86 overrides it.
 
-https://elixir.bootlin.com/linux/latest/source/include/linux/syscalls.h#L217
+[https://elixir.bootlin.com/linux/latest/source/include/linux/syscalls.h#L217](https://elixir.bootlin.com/linux/latest/source/include/linux/syscalls.h#L217)
 ```c
 #ifdef CONFIG_ARCH_HAS_SYSCALL_WRAPPER
 /*
@@ -277,7 +278,7 @@ https://elixir.bootlin.com/linux/latest/source/include/linux/syscalls.h#L217
 #endif /* CONFIG_ARCH_HAS_SYSCALL_WRAPPER */
 ```
 
-https://elixir.bootlin.com/linux/latest/source/arch/x86/include/asm/syscall_wrapper.h#L249
+[https://elixir.bootlin.com/linux/latest/source/arch/x86/include/asm/syscall_wrapper.h#L249](https://elixir.bootlin.com/linux/latest/source/arch/x86/include/asm/syscall_wrapper.h#L249)
 ```c
 /*
  * As the generic SYSCALL_DEFINE0() macro does not decode any parameters for
@@ -296,7 +297,7 @@ https://elixir.bootlin.com/linux/latest/source/arch/x86/include/asm/syscall_wrap
 
 
 ### `__X64_SYS_STUBx()` / `__IA32_SYS_STUBx()`
-https://elixir.bootlin.com/linux/latest/source/arch/x86/include/asm/syscall_wrapper.h#L92
+[https://elixir.bootlin.com/linux/latest/source/arch/x86/include/asm/syscall_wrapper.h#L92](https://elixir.bootlin.com/linux/latest/source/arch/x86/include/asm/syscall_wrapper.h#L92)
 ```c
 #ifdef CONFIG_X86_64
 #define __X64_SYS_STUB0(name)						\
@@ -313,7 +314,7 @@ https://elixir.bootlin.com/linux/latest/source/arch/x86/include/asm/syscall_wrap
 #endif /* CONFIG_X86_64 */
 ```
 
-https://elixir.bootlin.com/linux/latest/source/arch/x86/include/asm/syscall_wrapper.h#L112
+[https://elixir.bootlin.com/linux/latest/source/arch/x86/include/asm/syscall_wrapper.h#L112](https://elixir.bootlin.com/linux/latest/source/arch/x86/include/asm/syscall_wrapper.h#L112)
 ```c
 #if defined(CONFIG_X86_32) || defined(CONFIG_IA32_EMULATION)
 #define __IA32_SYS_STUB0(name)						\
@@ -352,7 +353,7 @@ https://elixir.bootlin.com/linux/latest/source/arch/x86/include/asm/syscall_wrap
 
 ## System Call Number
 ### System Call Number Table
-https://elixir.bootlin.com/linux/latest/source/arch/x86/entry/syscalls/syscall_32.tbl
+[https://elixir.bootlin.com/linux/latest/source/arch/x86/entry/syscalls/syscall_32.tbl](https://elixir.bootlin.com/linux/latest/source/arch/x86/entry/syscalls/syscall_32.tbl)
 ```
 #
 # 32-bit system call numbers and entry vectors
@@ -371,7 +372,7 @@ https://elixir.bootlin.com/linux/latest/source/arch/x86/entry/syscalls/syscall_3
 1	i386	exit			sys_exit
 ```
 
-https://elixir.bootlin.com/linux/latest/source/arch/x86/entry/syscalls/syscall_64.tbl
+[https://elixir.bootlin.com/linux/latest/source/arch/x86/entry/syscalls/syscall_64.tbl](https://elixir.bootlin.com/linux/latest/source/arch/x86/entry/syscalls/syscall_64.tbl)
 ```
 #
 # 64-bit system call numbers and entry vectors
@@ -389,21 +390,21 @@ https://elixir.bootlin.com/linux/latest/source/arch/x86/entry/syscalls/syscall_6
 
 - These `.tbl` files will be compiled to `arch/x86/include/generated/asm/syscalls_32.h` and `arch/x86/include/generated/asm/syscalls_64.h` as follows:
 	- arch/x86/include/generated/asm/syscalls_32.h
-```c
-$ head arch/x86/include/generated/asm/syscalls_32.h
-__SYSCALL(0, sys_restart_syscall)
-__SYSCALL(1, sys_exit)
-```
+	```c
+	$ head arch/x86/include/generated/asm/syscalls_32.h
+	__SYSCALL(0, sys_restart_syscall)
+	__SYSCALL(1, sys_exit)
+	```
 	- arch/x86/include/generated/asm/syscalls_64.h
-```
-$ head arch/x86/include/generated/asm/syscalls_64.h
-__SYSCALL(0, sys_read)
-__SYSCALL(1, sys_write)
-```
+	```
+	$ head arch/x86/include/generated/asm/syscalls_64.h
+	__SYSCALL(0, sys_read)
+	__SYSCALL(1, sys_write)
+	```
 
 
 ### `__SYSCALL()`
-https://elixir.bootlin.com/linux/latest/source/arch/x86/entry/syscall_32.c#L16
+[https://elixir.bootlin.com/linux/latest/source/arch/x86/entry/syscall_32.c#L16](https://elixir.bootlin.com/linux/latest/source/arch/x86/entry/syscall_32.c#L16)
 ```c
 #define __SYSCALL(nr, sym) extern long __ia32_##sym(const struct pt_regs *);
 
@@ -419,7 +420,7 @@ __visible const sys_call_ptr_t ia32_sys_call_table[] = {
 
 
 ### `sys_call_table[]`
-https://elixir.bootlin.com/linux/latest/source/arch/x86/entry/syscall_64.c#L10
+[https://elixir.bootlin.com/linux/latest/source/arch/x86/entry/syscall_64.c#L10](https://elixir.bootlin.com/linux/latest/source/arch/x86/entry/syscall_64.c#L10)
 ```c
 #define __SYSCALL(nr, sym) extern long __x64_##sym(const struct pt_regs *);
 #include <asm/syscalls_64.h>
@@ -432,7 +433,7 @@ asmlinkage const sys_call_ptr_t sys_call_table[] = {
 };
 ```
 
-https://elixir.bootlin.com/linux/latest/source/arch/x86/include/asm/syscall.h#L19
+[https://elixir.bootlin.com/linux/latest/source/arch/x86/include/asm/syscall.h#L19](https://elixir.bootlin.com/linux/latest/source/arch/x86/include/asm/syscall.h#L19)
 ```c
 typedef long (*sys_call_ptr_t)(const struct pt_regs *);
 extern const sys_call_ptr_t sys_call_table[];
@@ -449,6 +450,7 @@ extern const sys_call_ptr_t sys_call_table[];
 	- `__se_sys_read()`
 	- `__do_sys_read()`
 	- `ksys_read()`
+
 ```
 (gdb) bt
 #0  ksys_read (fd=3, buf=0x7ffe331814a8 "", count=832) at fs/read_write.c:609
@@ -459,7 +461,7 @@ extern const sys_call_ptr_t sys_call_table[];
 ```
 
 ### `syscall_init()`
-https://elixir.bootlin.com/linux/latest/source/arch/x86/kernel/cpu/common.c#L1804
+[https://elixir.bootlin.com/linux/latest/source/arch/x86/kernel/cpu/common.c#L1804](https://elixir.bootlin.com/linux/latest/source/arch/x86/kernel/cpu/common.c#L1804)
 ```c
 /* May not be marked __init: used by software suspend */
 void syscall_init(void)
@@ -502,7 +504,7 @@ void syscall_init(void)
 
 
 ### `entry_SYSCALL_64`
-https://elixir.bootlin.com/linux/latest/source/arch/x86/entry/entry_64.S#L50
+[https://elixir.bootlin.com/linux/latest/source/arch/x86/entry/entry_64.S#L50](https://elixir.bootlin.com/linux/latest/source/arch/x86/entry/entry_64.S#L50)
 ```c
 /*
  * 64-bit SYSCALL instruction entry. Up to 6 arguments in registers.
@@ -543,7 +545,7 @@ https://elixir.bootlin.com/linux/latest/source/arch/x86/entry/entry_64.S#L50
  */
 ```
 
-https://elixir.bootlin.com/linux/latest/source/arch/x86/entry/entry_64.S#L87
+[https://elixir.bootlin.com/linux/latest/source/arch/x86/entry/entry_64.S#L87](https://elixir.bootlin.com/linux/latest/source/arch/x86/entry/entry_64.S#L87)
 ```
 SYM_CODE_START(entry_SYSCALL_64)
 /* snipped */
@@ -559,12 +561,12 @@ SYM_CODE_END(entry_SYSCALL_64)
 
 
 ### `do_syscall_64()`
-https://elixir.bootlin.com/linux/latest/source/arch/x86/include/asm/syscall.h#L129
+[https://elixir.bootlin.com/linux/latest/source/arch/x86/include/asm/syscall.h#L129](https://elixir.bootlin.com/linux/latest/source/arch/x86/include/asm/syscall.h#L129)
 ```c
 void do_syscall_64(struct pt_regs *regs, int nr);
 ```
 
-https://elixir.bootlin.com/linux/latest/source/arch/x86/entry/common.c#L73
+[https://elixir.bootlin.com/linux/latest/source/arch/x86/entry/common.c#L73](https://elixir.bootlin.com/linux/latest/source/arch/x86/entry/common.c#L73)
 ```c
 __visible noinstr void do_syscall_64(struct pt_regs *regs, int nr)
 {
@@ -585,7 +587,7 @@ __visible noinstr void do_syscall_64(struct pt_regs *regs, int nr)
 
 
 ### `struct pt_regs`
-https://elixir.bootlin.com/linux/latest/source/arch/x86/include/asm/ptrace.h#L59
+[https://elixir.bootlin.com/linux/latest/source/arch/x86/include/asm/ptrace.h#L59](https://elixir.bootlin.com/linux/latest/source/arch/x86/include/asm/ptrace.h#L59)
 ```c
 struct pt_regs {
 /*
@@ -625,7 +627,7 @@ struct pt_regs {
 
 
 ### `do_syscall_x64()`
-https://elixir.bootlin.com/linux/latest/source/arch/x86/entry/common.c#L40
+[https://elixir.bootlin.com/linux/latest/source/arch/x86/entry/common.c#L40](https://elixir.bootlin.com/linux/latest/source/arch/x86/entry/common.c#L40)
 ```c
 static __always_inline bool do_syscall_x64(struct pt_regs *regs, int nr)
 {
@@ -648,7 +650,7 @@ static __always_inline bool do_syscall_x64(struct pt_regs *regs, int nr)
 
 
 ### `SYSCALL_DEFINE3(read, ...)`
-https://elixir.bootlin.com/linux/latest/source/fs/read_write.c#L627
+[https://elixir.bootlin.com/linux/latest/source/fs/read_write.c#L627](https://elixir.bootlin.com/linux/latest/source/fs/read_write.c#L627)
 ```c
 SYSCALL_DEFINE3(read, unsigned int, fd, char __user *, buf, size_t, count)
 {
@@ -658,12 +660,12 @@ SYSCALL_DEFINE3(read, unsigned int, fd, char __user *, buf, size_t, count)
 
 
 ### `ksys_read()`
-https://elixir.bootlin.com/linux/latest/source/include/linux/syscalls.h#L1293
+[https://elixir.bootlin.com/linux/latest/source/include/linux/syscalls.h#L1293](https://elixir.bootlin.com/linux/latest/source/include/linux/syscalls.h#L1293)
 ```c
 ssize_t ksys_read(unsigned int fd, char __user *buf, size_t count);
 ```
 
-https://elixir.bootlin.com/linux/latest/source/fs/read_write.c#L608
+[https://elixir.bootlin.com/linux/latest/source/fs/read_write.c#L608](https://elixir.bootlin.com/linux/latest/source/fs/read_write.c#L608)
 ```c
 ssize_t ksys_read(unsigned int fd, char __user *buf, size_t count)
 {
@@ -689,12 +691,12 @@ ssize_t ksys_read(unsigned int fd, char __user *buf, size_t count)
 
 ## Execution Path for `SYSENTER` in x86_64 kernel
 ### `entry_SYSENTER_compat()`
-https://elixir.bootlin.com/linux/latest/source/arch/x86/include/asm/proto.h#L27
+[https://elixir.bootlin.com/linux/latest/source/arch/x86/include/asm/proto.h#L27](https://elixir.bootlin.com/linux/latest/source/arch/x86/include/asm/proto.h#L27)
 ```c
 void entry_SYSENTER_compat(void);
 ```
 
-https://elixir.bootlin.com/linux/latest/source/arch/x86/entry/entry_64_compat.S#L49
+[https://elixir.bootlin.com/linux/latest/source/arch/x86/entry/entry_64_compat.S#L49](https://elixir.bootlin.com/linux/latest/source/arch/x86/entry/entry_64_compat.S#L49)
 ```
 /*
  * 32-bit SYSENTER entry.
@@ -735,7 +737,7 @@ SYM_CODE_END(entry_SYSENTER_compat)
 
 
 ### `do_SYSENTER_32()`
-https://elixir.bootlin.com/linux/latest/source/arch/x86/entry/common.c#L238
+[https://elixir.bootlin.com/linux/latest/source/arch/x86/entry/common.c#L238](https://elixir.bootlin.com/linux/latest/source/arch/x86/entry/common.c#L238)
 ```c
 /* Returns 0 to return using IRET or 1 to return using SYSEXIT/SYSRETL. */
 __visible noinstr long do_SYSENTER_32(struct pt_regs *regs)
@@ -752,7 +754,7 @@ __visible noinstr long do_SYSENTER_32(struct pt_regs *regs)
 
 
 ### `do_fast_syscall_32()`
-https://elixir.bootlin.com/linux/latest/source/arch/x86/entry/common.c#L186
+[https://elixir.bootlin.com/linux/latest/source/arch/x86/entry/common.c#L186](https://elixir.bootlin.com/linux/latest/source/arch/x86/entry/common.c#L186)
 ```c
 /* Returns 0 to return using IRET or 1 to return using SYSEXIT/SYSRETL. */
 __visible noinstr long do_fast_syscall_32(struct pt_regs *regs)
@@ -765,7 +767,7 @@ __visible noinstr long do_fast_syscall_32(struct pt_regs *regs)
 }
 ```
 
-https://elixir.bootlin.com/linux/latest/source/arch/x86/entry/common.c#L138
+[https://elixir.bootlin.com/linux/latest/source/arch/x86/entry/common.c#L138](https://elixir.bootlin.com/linux/latest/source/arch/x86/entry/common.c#L138)
 ```c
 static noinstr bool __do_fast_syscall_32(struct pt_regs *regs)
 {
@@ -777,7 +779,7 @@ static noinstr bool __do_fast_syscall_32(struct pt_regs *regs)
 }
 ```
 
-https://elixir.bootlin.com/linux/latest/source/arch/x86/entry/common.c#L102
+[https://elixir.bootlin.com/linux/latest/source/arch/x86/entry/common.c#L102](https://elixir.bootlin.com/linux/latest/source/arch/x86/entry/common.c#L102)
 ```c
 /*
  * Invoke a 32-bit syscall.  Called with IRQs on in CONTEXT_KERNEL.
@@ -803,7 +805,7 @@ static __always_inline void do_syscall_32_irqs_on(struct pt_regs *regs, int nr)
 
 ## Execution Path for `INT 0x80` in x86_64 kernel
 ### `def_idts[]`
-https://elixir.bootlin.com/linux/latest/source/arch/x86/kernel/idt.c#L112
+[https://elixir.bootlin.com/linux/latest/source/arch/x86/kernel/idt.c#L112](https://elixir.bootlin.com/linux/latest/source/arch/x86/kernel/idt.c#L112)
 ```c
 /*
  * The default IDT entries which are set up in trap_init() before
@@ -821,14 +823,14 @@ static const __initconst struct idt_data def_idts[] = {
 };
 ```
 
-https://elixir.bootlin.com/linux/latest/source/arch/x86/include/asm/irq_vectors.h#L45
+[https://elixir.bootlin.com/linux/latest/source/arch/x86/include/asm/irq_vectors.h#L45](https://elixir.bootlin.com/linux/latest/source/arch/x86/include/asm/irq_vectors.h#L45)
 ```c
 #define IA32_SYSCALL_VECTOR		0x80
 ```
 
 
 ### `entry_INT80_compat()`
-https://elixir.bootlin.com/linux/latest/source/arch/x86/entry/entry_64_compat.S#L341
+[https://elixir.bootlin.com/linux/latest/source/arch/x86/entry/entry_64_compat.S#L341](https://elixir.bootlin.com/linux/latest/source/arch/x86/entry/entry_64_compat.S#L341)
 ```
 /*
  * 32-bit legacy system call entry.
@@ -866,7 +868,7 @@ SYM_CODE_END(entry_INT80_compat)
 
 
 ### `do_int80_syscall_32()`
-https://elixir.bootlin.com/linux/latest/source/arch/x86/entry/common.c#L119
+[https://elixir.bootlin.com/linux/latest/source/arch/x86/entry/common.c#L119](https://elixir.bootlin.com/linux/latest/source/arch/x86/entry/common.c#L119)
 ```c
 /* Handles int $0x80 */
 __visible noinstr void do_int80_syscall_32(struct pt_regs *regs)
@@ -878,7 +880,7 @@ __visible noinstr void do_int80_syscall_32(struct pt_regs *regs)
 }
 ```
 
-https://elixir.bootlin.com/linux/latest/source/arch/x86/entry/common.c#L102
+[https://elixir.bootlin.com/linux/latest/source/arch/x86/entry/common.c#L102](https://elixir.bootlin.com/linux/latest/source/arch/x86/entry/common.c#L102)
 ```c
 /*
  * Invoke a 32-bit syscall.  Called with IRQs on in CONTEXT_KERNEL.
@@ -897,6 +899,113 @@ static __always_inline void do_syscall_32_irqs_on(struct pt_regs *regs, int nr)
 	} else if (nr != -1) {
 		regs->ax = __ia32_sys_ni_syscall(regs);
 	}
+}
+```
+
+
+
+## vDSO
+### Linker Scripts
+[https://elixir.bootlin.com/linux/latest/source/arch/x86/entry/vdso/vdso.lds.S](https://elixir.bootlin.com/linux/latest/source/arch/x86/entry/vdso/vdso.lds.S)
+```c
+/*
+ * This controls what userland symbols we export from the vDSO.
+ */
+VERSION {
+	LINUX_2.6 {
+	global:
+		clock_gettime;
+		__vdso_clock_gettime;
+		gettimeofday;
+		__vdso_gettimeofday;
+		getcpu;
+		__vdso_getcpu;
+		time;
+		__vdso_time;
+		clock_getres;
+		__vdso_clock_getres;
+		__vdso_sgx_enter_enclave;
+	local: *;
+	};
+}
+```
+
+[https://elixir.bootlin.com/linux/latest/source/arch/x86/entry/vdso/vdso-layout.lds.S](https://elixir.bootlin.com/linux/latest/source/arch/x86/entry/vdso/vdso-layout.lds.S)
+
+
+### Make the vDSO Page Accessible
+[https://elixir.bootlin.com/linux/latest/source/fs/binfmt_elf.c#L100](https://elixir.bootlin.com/linux/latest/source/fs/binfmt_elf.c#L100)
+```c
+static struct linux_binfmt elf_format = {
+	.module		= THIS_MODULE,
+	.load_binary	= load_elf_binary,
+	.load_shlib	= load_elf_library,
+	.core_dump	= elf_core_dump,
+	.min_coredump	= ELF_EXEC_PAGESIZE,
+};
+```
+
+[https://elixir.bootlin.com/linux/latest/source/fs/binfmt_elf.c#L823](https://elixir.bootlin.com/linux/latest/source/fs/binfmt_elf.c#L823)
+```c
+static int load_elf_binary(struct linux_binprm *bprm)
+{
+/* snipped */
+#ifdef ARCH_HAS_SETUP_ADDITIONAL_PAGES
+	retval = ARCH_SETUP_ADDITIONAL_PAGES(bprm, elf_ex, !!interpreter);
+	if (retval < 0)
+		goto out;
+#endif /* ARCH_HAS_SETUP_ADDITIONAL_PAGES */
+/* snipped */
+}
+```
+
+[https://elixir.bootlin.com/linux/latest/source/include/linux/elf.h#L31](https://elixir.bootlin.com/linux/latest/source/include/linux/elf.h#L31)
+```c
+#if defined(ARCH_HAS_SETUP_ADDITIONAL_PAGES) && !defined(ARCH_SETUP_ADDITIONAL_PAGES)
+#define ARCH_SETUP_ADDITIONAL_PAGES(bprm, ex, interpreter) \
+	arch_setup_additional_pages(bprm, interpreter)
+#endif
+```
+
+[https://elixir.bootlin.com/linux/latest/source/arch/x86/entry/vdso/vma.c#L389](https://elixir.bootlin.com/linux/latest/source/arch/x86/entry/vdso/vma.c#L389)
+```c
+int arch_setup_additional_pages(struct linux_binprm *bprm, int uses_interp)
+{
+	if (!vdso64_enabled)
+		return 0;
+
+	return map_vdso_randomized(&vdso_image_64);
+}
+```
+
+[https://elixir.bootlin.com/linux/latest/source/arch/x86/entry/vdso/vma.c#L345](https://elixir.bootlin.com/linux/latest/source/arch/x86/entry/vdso/vma.c#L345)
+```c
+static int map_vdso_randomized(const struct vdso_image *image)
+{
+	unsigned long addr = vdso_addr(current->mm->start_stack, image->size-image->sym_vvar_start);
+
+	return map_vdso(image, addr);
+}
+```
+
+[https://elixir.bootlin.com/linux/latest/source/arch/x86/entry/vdso/vma.c#L246](https://elixir.bootlin.com/linux/latest/source/arch/x86/entry/vdso/vma.c#L246)
+```c
+/*
+ * Add vdso and vvar mappings to current process.
+ * @image          - blob to map
+ * @addr           - request a specific address (zero to map at free addr)
+ */
+static int map_vdso(const struct vdso_image *image, unsigned long addr)
+{
+/* snipped */
+	if (IS_ERR(vma)) {
+		ret = PTR_ERR(vma);
+		do_munmap(mm, text_start, image->size, NULL);
+	} else {
+		current->mm->context.vdso = (void __user *)text_start;
+		current->mm->context.vdso_image = image;
+	}
+/* snipped */
 }
 ```
 
@@ -938,113 +1047,6 @@ write(1, "Hello, world!\n", 14Hello, world!
 )         = 14
 exit(0)                                 = ?
 +++ exited with 0 +++
-```
-
-
-
-## vDSO
-### Linker Scripts
-https://elixir.bootlin.com/linux/latest/source/arch/x86/entry/vdso/vdso.lds.S
-```c
-/*
- * This controls what userland symbols we export from the vDSO.
- */
-VERSION {
-	LINUX_2.6 {
-	global:
-		clock_gettime;
-		__vdso_clock_gettime;
-		gettimeofday;
-		__vdso_gettimeofday;
-		getcpu;
-		__vdso_getcpu;
-		time;
-		__vdso_time;
-		clock_getres;
-		__vdso_clock_getres;
-		__vdso_sgx_enter_enclave;
-	local: *;
-	};
-}
-```
-
-https://elixir.bootlin.com/linux/latest/source/arch/x86/entry/vdso/vdso-layout.lds.S
-
-
-### Make the vDSO Page Accessible
-https://elixir.bootlin.com/linux/latest/source/fs/binfmt_elf.c#L100
-```c
-static struct linux_binfmt elf_format = {
-	.module		= THIS_MODULE,
-	.load_binary	= load_elf_binary,
-	.load_shlib	= load_elf_library,
-	.core_dump	= elf_core_dump,
-	.min_coredump	= ELF_EXEC_PAGESIZE,
-};
-```
-
-https://elixir.bootlin.com/linux/latest/source/fs/binfmt_elf.c#L823
-```c
-static int load_elf_binary(struct linux_binprm *bprm)
-{
-/* snipped */
-#ifdef ARCH_HAS_SETUP_ADDITIONAL_PAGES
-	retval = ARCH_SETUP_ADDITIONAL_PAGES(bprm, elf_ex, !!interpreter);
-	if (retval < 0)
-		goto out;
-#endif /* ARCH_HAS_SETUP_ADDITIONAL_PAGES */
-/* snipped */
-}
-```
-
-https://elixir.bootlin.com/linux/latest/source/include/linux/elf.h#L31
-```c
-#if defined(ARCH_HAS_SETUP_ADDITIONAL_PAGES) && !defined(ARCH_SETUP_ADDITIONAL_PAGES)
-#define ARCH_SETUP_ADDITIONAL_PAGES(bprm, ex, interpreter) \
-	arch_setup_additional_pages(bprm, interpreter)
-#endif
-```
-
-https://elixir.bootlin.com/linux/latest/source/arch/x86/entry/vdso/vma.c#L389
-```c
-int arch_setup_additional_pages(struct linux_binprm *bprm, int uses_interp)
-{
-	if (!vdso64_enabled)
-		return 0;
-
-	return map_vdso_randomized(&vdso_image_64);
-}
-```
-
-https://elixir.bootlin.com/linux/latest/source/arch/x86/entry/vdso/vma.c#L345
-```c
-static int map_vdso_randomized(const struct vdso_image *image)
-{
-	unsigned long addr = vdso_addr(current->mm->start_stack, image->size-image->sym_vvar_start);
-
-	return map_vdso(image, addr);
-}
-```
-
-https://elixir.bootlin.com/linux/latest/source/arch/x86/entry/vdso/vma.c#L246
-```c
-/*
- * Add vdso and vvar mappings to current process.
- * @image          - blob to map
- * @addr           - request a specific address (zero to map at free addr)
- */
-static int map_vdso(const struct vdso_image *image, unsigned long addr)
-{
-/* snipped */
-	if (IS_ERR(vma)) {
-		ret = PTR_ERR(vma);
-		do_munmap(mm, text_start, image->size, NULL);
-	} else {
-		current->mm->context.vdso = (void __user *)text_start;
-		current->mm->context.vdso_image = image;
-	}
-/* snipped */
-}
 ```
 
 
