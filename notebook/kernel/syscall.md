@@ -390,7 +390,7 @@ ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsysca
 
 - These `.tbl` files will be compiled to `arch/x86/include/generated/asm/syscalls_32.h` and `arch/x86/include/generated/asm/syscalls_64.h` as follows:
 	- arch/x86/include/generated/asm/syscalls_32.h
-	```c
+	```
 	$ head arch/x86/include/generated/asm/syscalls_32.h
 	__SYSCALL(0, sys_restart_syscall)
 	__SYSCALL(1, sys_exit)
