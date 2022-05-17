@@ -125,6 +125,7 @@ Common pattern
 			- The function graph tracer hijacks the return address of the function in order to insert a trace callback for the function exit.
 			- This breaks the CPU's branch prediction and cause a bit more overhead than the function tracer.
 		- `+` is shown when the duration is greater than 10 ms. `!` is shown when the duration is greater than 100 ms.
+
 ```
 [~]# cd /sys/kernel/debug/tracing
 [tracing]# echo function_graph > current_tracer
@@ -439,3 +440,10 @@ To disable all tracing and give back the system performance (clear all data from
 
 ### Links
 - [trace-cmd(1) - Linux manual page](https://man7.org/linux/man-pages/man1/trace-cmd.1.html)
+
+
+
+
+## magic-trace
+### Links
+- [janestreet/magic-trace: magic-trace collects and displays high-resolution traces of what a process is doing](https://github.com/janestreet/magic-trace)
