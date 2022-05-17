@@ -1183,7 +1183,7 @@ static int map_vdso(const struct vdso_image *image, unsigned long addr)
 
 
 ## Hands-On
-### Display "Hello World" into the Standard Output
+### "Hello, world!" with `SYSCALL`
 ```hello.S
 .data
 
@@ -1206,8 +1206,7 @@ _start:
 	syscall				# invoke system call
 ```
 ```
-$ gcc -c hello.S
-$ ld -o hello hello.o
+$ gcc -nostdlib -o hello hello.S
 $ ./hello
 Hello, world!
 ```
@@ -1220,6 +1219,44 @@ exit(0)                                 = ?
 +++ exited with 0 +++
 ```
 
+
+### "Hello, world!" with `INT 0x80`
+```hello.S
+.data
+
+msg:
+	.ascii "Hello, world!\n"
+	len = . - msg
+
+
+.text
+	.global _start
+
+_start:
+	movl $4, %eax
+	movl $1, %ebx
+	movl $msg, %ecx
+	movl $len, %edx
+	int $0x80
+
+	movl $1, %eax
+	xorl %ebx, %ebx
+	int $0x80
+```
+```
+$ gcc -m32 -nostdlib -o hello hello.S
+$ ./hello
+Hello, world!
+```
+```
+$ strace ./hello
+execve("./hello", ["./hello"], 0x7fff0f6200e0 /* 23 vars */) = 0
+strace: [ Process PID=10124 runs in 32 bit mode. ]
+write(1, "Hello, world!\n", 14Hello, world!
+)         = 14
+exit(0)                                 = ?
++++ exited with 0 +++
+```
 
 
 ## Links
