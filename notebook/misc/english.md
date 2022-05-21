@@ -31,6 +31,8 @@ title: English
 
 
 ## Words & Phrases (English-to-English)
+- for what it's worth
+	- suggesting that what you are saying or referring to may not be very valuable or helpful, especially because you do not want to appear arrogant.
 - give someone a nudge to do
 	- to push someone gently to do something.
 - drop in
@@ -106,6 +108,7 @@ title: English
 - OP: original poster
 	- used in online comments to refer to the person who posted the original question or comment.
 - IMO: in my opinion
+- IOW: in other words
 - AFAIK: as far as I know
 - FWIW: for what it's worth
 	- said when you are giving someone a piece of information and you are not certain if that information is useful or important
