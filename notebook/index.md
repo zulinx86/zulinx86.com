@@ -24,9 +24,10 @@ title: Table of Contents
 	- [System Call](https://zulinx86.com/notebook/kernel/syscall)
 	- [Device Driver](https://zulinx86.com/notebook/kernel/device_driver)
 	- [Device Model](https://zulinx86.com/notebook/kernel/device_model)
-	- [kobject](https://zulinx86.com/notebook/kernel/kobject)
 	- [sysfs](https://zulinx86.com/notebook/kernel/sysfs)
 	- [kernfs](https://zulinx86.com/notebook/kernel/kernfs)
+	- [kobject](https://zulinx86.com/notebook/kernel/kobject)
+	- [kref](https://zulinx86.com/notebook/kernel/kref)
 	- [FUSE](https://zulinx86.com/notebook/kernel/fuse)
 - Model of Computation
 	- [Deterministic Finite Automaton](https://zulinx86.com/notebook/model_of_computation/deterministic_finite_automaton)
