@@ -37,7 +37,7 @@ title: BIOS (Basic Input/Output System)
 - Parameters
 	- AL = number of sectors to read
 	- CH = cylinder number & 0xff
-	- CL = (cylinder number & 0x300) >> 2 | sector number (5 bits)
+	- CL = (cylinder number & 0x300) \>\> 2 \| sector number (5 bits)
 	- DH = head number
 	- DL = drive number
 	- ES:BX = pointer to buffer
