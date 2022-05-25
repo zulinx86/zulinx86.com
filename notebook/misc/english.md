@@ -31,6 +31,15 @@ title: English
 
 
 ## Words & Phrases (English-to-English)
+- given that SV
+	- take it into account
+- there is little point
+	- little reason or not a lot of reason
+- in the first place
+	- used to indicate what should have been done at the beginning of a situation.
+	- used when listing the most important parts of something or the most important reasons for something.
+- to this end
+	- in order to achieve a particular aim.
 - for what it's worth
 	- suggesting that what you are saying or referring to may not be very valuable or helpful, especially because you do not want to appear arrogant.
 - give someone a nudge to do
