@@ -47,6 +47,7 @@ title: Debug
     $ qemu-system-x86_64 -boot c -m 2048M -kernel ./arch/x86/boot/bzImage -hda ${WORKDIR}/buildroot/output/images/rootfs.ext4 -append "root=/dev/sda rw console=ttyS0,115200 nokaslr" -serial stdio -display none -s -S
     ```
 1. Login another terminal and run GDB.
+
   ```
   $ gdb vmlinux
   (gdb) target remote :1234 
