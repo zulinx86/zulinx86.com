@@ -15,6 +15,7 @@ title: Table of Contents
 	- [Mode](https://zulinx86.com/notebook/x86_64/mode)
 	- [Multitaslking](https://zulinx86.com/notebook/x86_64/multitasking)
 	- [Privilege Levels](https://zulinx86.com/notebook/x86_64/privilege_levels)
+	- [Memory](https://zulinx86.com/notebook/x86_64/memory)
 - Linux
 	- [Audit](https://zulinx86.com/notebook/linux/audit)
 	- [Tracing](https://zulinx86.com/notebook/linux/tracing)
@@ -29,6 +30,8 @@ title: Table of Contents
 	- [kobject](https://zulinx86.com/notebook/kernel/kobject)
 	- [kref](https://zulinx86.com/notebook/kernel/kref)
 	- [FUSE](https://zulinx86.com/notebook/kernel/fuse)
+- Virtualization
+	- [CPU](https://zulinx86.com/notebook/virtualization/cpu)
 - Model of Computation
 	- [Deterministic Finite Automaton](https://zulinx86.com/notebook/model_of_computation/deterministic_finite_automaton)
 	- [Turing Machine](https://zulinx86.com/notebook/model_of_computation/turing_machine)
