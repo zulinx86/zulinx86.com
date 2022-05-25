@@ -37,9 +37,9 @@ title: Debug
     (1)     -> Compile-time checks and compiler options
     ```
 1. Build.
-```
-$ make -j$(nproc)
-```
+  ```
+  $ make -j$(nproc)
+  ```
 1. Boot. (You need to make rootfs with buildroot. Please see [here](https://zulinx86.com/notebook/kernel/environment).)
 	- `-s` is a short cut for `-gdb tcp::1234` which launches a GDB server on TCP port 1234.
 	- `-S` waits for its execution.
