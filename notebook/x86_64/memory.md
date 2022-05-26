@@ -386,18 +386,58 @@ title: Memory Management
 - If paging is not used, the linear address space is mapped directly into the physical address space.
 - Paging supports a virtual memory environment where a large linear address space is simulated with a small amount of physical memory and some disk storage.
 - When using paging, each segment is divided into pages (typically 4 KiB each in size), which are stored either in physical memory or on the disk.
-- How to convert address
-	- The operating system maintains a page directory and a set of page tables to keep track of the pages.
-	- When a program attemps to access an address location in the linear address space, the processor uses the page directory and page tables to translate the linear address into a physical address and then performs the requested
+- This translation is done by special hardware called memory management unit (MMU).
 
 
+### Protected / Compatibility Mode (32-bit)
+- The linear address space is 32-bit (4 GiB) in size, regardless of whether PAE is enabled or not.
+- non-PAE mode
+	- The physical address space is up to 32-bit (4 GiB) in size.
+	- 4 KiB page
+		- Page Directory (10 bits)
+		- Page Table (10 bits)
+		- Offset (12 bits)
+	- 4 MiB page
+		- Page Directory (10 bits)
+		- Offset (22 bits)
+- PAE mode
+	- The physical address space is up to 36-bit (64 GiB) in size.
+	- 4 KiB page
+		- Page Directory Pointer (2 bits)
+		- Page Directory (9 bits)
+		- Page Table (9 bits)
+		- Offset (12 bits)
+	- 2 MiB page
+		- Page Directory Pointer (2 bits)
+		- Page Directory (9 bits)
+		- Offset (21 bits)
 
-## Real Mode
+
+### Long Mode (64-bit)
+- The linear address space is 48-bit (256 TiB) in size. (Bits 48-63 must be a copy of bit 47).
+- The physical address space is 52-bit (4 PiB) in size.
+- 4 KiB page
+	- Page Map Level 4 (9 bits)
+	- Page Directory Pointer (9 bits)
+	- Page Directory (9 bits)
+	- Page Table (9 bits)
+	- Offset (12 bits)
+- 2 MiB page
+	- Page Map Level 4 (9 bits)
+	- Page Directory Pointer (9 bits)
+	- Page Directory (9 bits)
+	- Offset (21 bits)
+- 1 GiB page
+	- Page Map Level 4 (9 bits)
+	- Page Directory Pointer (9 bits)
+	- Offset (30 bits)
 
 
-## Protected Mode
-
-
-## IA-32e Mode
-
-
+### Translation Lookaside Buffer (TLB)
+- TLB is a cache of memory page translations employed by MMU.
+- It is used to reduce the address translation (called page walk).
+- Address space switch
+	- On switching an address space, some TLB entries become invalid, since the virtual-to-physical mapping is different.
+	- The simplest strategy to deal with this is to completely flush the TLB. After the TLB flush, the performance of memory reference gets worse since it requires page walks.
+	- Newer CPUs use effective strategies marking which process an entry is for.
+	- TLB flush can be an important security mechanism for memory isolation between processes to ensure a process cannot access data stored in memory pages of another process.
