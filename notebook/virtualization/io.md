@@ -24,17 +24,19 @@ title: I/O Virtualization
 
 
 ## VirtIO
-- VirtIO is a standardized paravirtualized interface which allows virtual machines access to simplified "virtual" devices.
-- Access the virtual devices through VirtIO on a guest VM improves performane over emulated devices, as it requires only the minimum setup and configuration needed to send and receive data.
-- VirtIO was originally developed by Rusty Russell for his own virtualization solution called lguest.
-- The communication between the front-end drivers (implemented in the guest operating system) and the back-end drivers (implmented in the hypervisor) uses virtual queue interface implemented as rings.
+- Virtio is a standardized paravirtualized interface which allows virtual machines access to simplified "virtual" devices.
+- Access to the virtual devices through virtio on a guest VM improves performane over emulated devices, as it requires only the minimum setup and configuration needed to send and receive data.
+- Virtio was originally developed by Rusty Russell for his own virtualization solution called lguest.
+- The communication between the front-end drivers (implemented in the guest operating system) and the back-end drivers (implmented in the hypervisor) uses the ring buffer shared with both.
 
 
-### PCI
-- VirtIO devices appear, to the guest VM, to be normal PCI devices with a specific Vendor ID and Device ID.
+### VirtIO PCI
+- Virtio devices appear, to the guest VM, to be normal PCI devices with a specific Vendor ID and Device ID.
 - All VirtIO devices have a Vendor ID of 0x1AF4, and have a Device ID between 0x1000 and 0x103F.
 - The type of VirtIO device (network device, block device, etc.) can be determined by the Subsystem ID.
 
+
+### Links
 - [VirtIO](http://virtio.expert/)
 - [Virtual I/O Device (VIRTIO) Version 1.0](http://docs.oasis-open.org/virtio/virtio/v1.0/virtio-v1.0.html)
 - [Virtio - OSDev Wiki](https://wiki.osdev.org/Virtio)
