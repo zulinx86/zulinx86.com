@@ -184,6 +184,16 @@ title: CPU Virtualization
 	- More precisely, it introduces new execution modes: VMX root mode and VMX non-root mode.
 		- `VMLAUNCH` / `VMRESUME` instructions switches to VMX non-root mode, called "VM Entry".
 		- Sensitive instructions in guest VM switches to VMX root mode, called "VM Exit".
+	- Virtual Machine Control Structure (VMCS)
+		- VMCS revision identifier
+		- VMCS-abort indicator
+		- VMCS data
+			- Guest-state area
+			- Host-state area
+			- VM-execution control fieds
+			- VM-exit control fields
+			- VM-entry control fields
+			- VM-exit information fields
 - Hybrid of PV and HVM
 	- (Genuine) HVM
 		- The genuine HVM has the only hardware extension for CPU.
