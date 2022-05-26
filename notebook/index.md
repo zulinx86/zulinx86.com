@@ -22,6 +22,7 @@ title: Table of Contents
 - Kernel
 	- [Environment for Kernel Development on Amazon Linux 2](https://zulinx86.com/notebook/kernel/environment)
 	- [Debug](https://zulinx86.com/notebook/kernel/debug)
+	- [Boot](https://zulinx86.com/notebook/kernel/boot)
 	- [System Call](https://zulinx86.com/notebook/kernel/syscall)
 	- [Device Driver](https://zulinx86.com/notebook/kernel/device_driver)
 	- [Device Model](https://zulinx86.com/notebook/kernel/device_model)
@@ -29,6 +30,7 @@ title: Table of Contents
 	- [kernfs](https://zulinx86.com/notebook/kernel/kernfs)
 	- [kobject](https://zulinx86.com/notebook/kernel/kobject)
 	- [kref](https://zulinx86.com/notebook/kernel/kref)
+	- [kvm](https://zulinx86.com/notebook/kernel/kvm)
 	- [FUSE](https://zulinx86.com/notebook/kernel/fuse)
 - Virtualization
 	- [CPU Virtualization](https://zulinx86.com/notebook/virtualization/cpu)
