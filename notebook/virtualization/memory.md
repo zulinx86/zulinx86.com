@@ -36,6 +36,12 @@ title: Memory Virtualization
 
 
 
+## Memory Ballooning
+- Memory ballooning is a technique used to eliminate the need to overprovision memory used by a VM.
+- To implement it, the virtual machine's kernel implements a "balloon driver" which allocates unused memory within the reserved memory pool (called "balloon") so that the VMM can reclaim it.
+
+
+
 ## Links
 - [Performance Evaluation of Intel EPT Hardware Assist](https://www.vmware.com/pdf/Perf_ESX_Intel-EPT-eval.pdf)
 - [Virtualize-Memory](https://cseweb.ucsd.edu/~yiying/cse291j-winter20/reading/Virtualize-Memory.pdf)
