@@ -28,9 +28,16 @@ title: English
 - 興味本位の質問
 	- out of interest
 	- out of curiosity
+- なんとかなる
+	- Everything will be alright.
+	- In the end, it's going to be just fine.
 
 
 ## Words & Phrases (English-to-English)
+- when it comes to
+	- used to identify the specific topic that is being talked about.
+- at the end of the day
+	- use this phrase before you give the most important fact of a situation.
 - given that SV
 	- take it into account
 - there is little point
@@ -119,6 +126,7 @@ title: English
 - IMO: in my opinion
 - IOW: in other words
 - AFAIK: as far as I know
+- AFAIR: as far as I remember
 - FWIW: for what it's worth
 	- said when you are giving someone a piece of information and you are not certain if that information is useful or important
 - FYI: for your information:
