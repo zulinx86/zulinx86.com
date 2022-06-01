@@ -113,6 +113,71 @@ title: Assembly
 
 
 
+## Instruction Format
+[https://www.intel.com/content/dam/develop/public/us/en/documents/325383-sdm-vol-2abcd.pdf#page=37](https://www.intel.com/content/dam/develop/public/us/en/documents/325383-sdm-vol-2abcd.pdf#page=37)
+
+```
++-------------+-----------------+---------------+---------------+----------------------+----------------+
+| Instruction |     Opcode      |    ModR/M     |      SIB      |     Displacement     |   Immediate    |
+|  Prefixes   |                 |               |               |                      |                |
++-------------+-----------------+---------------+---------------+----------------------+----------------+
+  Prefixes of   1, 2, or 3 byte   1 byte          1 byte          Address displacement   Immediate data
+  1 byte each   opcode            (if required)   (if required)   of 1, 2, or 4 bytes    of 1, 2, or 4
+  (optional)                             |               |        or none                bytes or none
+                                         v               v
+                         7  6  5  4  3  2  1  0    7   6   5  4  3  2  1  0  
+                        +-----+--------+-------+  +-------+--------+--------+
+                        | Mod |  Reg/  |  R/M  |  | Scale | Index  |  Base  |
+                        |     | Opcode |       |  |       |        |        |
+                        +-----+--------+-------+  +-------+--------+--------+
+```
+
+
+### Instruction Prefixes
+- List of prefixes
+	- `0xf0`, `0x0f2`, `0xf3`, `0x26`, `0x2e`, `0x36`, `0x3e`, `0x64`, `0x65`, `0x66`, `0x67`
+- Group 1
+	- Lock and repeat prefixes
+	- BND prefix
+- Group 2
+	- Segment override prefixes
+		- `0x2e`: CS segment override prefix
+		- `0x36`: SS segment override prefix
+		- `0x3e`: DS segment override prefix
+		- `0x26`: ES segment override prefix
+		- `0x64`: FS segment override prefix
+		- `0x65`: GS segment override prefix
+	- Branch hints
+		- `0x2e`: Branch not taken
+		- `0x3e`: Branch taken
+- Group 3
+	- `0x66`: Operand-size override prefix
+- Group 4
+	- `0x67`: Address-size override predix
+
+
+### Opcodes
+- A primary opcode can be 1, 2, or 3 bytes in length.
+- A 3-bit opcode field in the ModR/M byte is sometimes used additionally.
+
+
+### ModR/M and SIB
+- Many instructions that refer to an operand in memory have an addressing-form specifier byte (called ModR/M).
+	- mod field: combines with the r/m field to form 32 possible values: eight registers and 24 addressing modes.
+	- reg/opcode field: specifies either a register number or three more bits of opcode information.
+	- r/m field: specifies a register as an operand and combines with the mod field to form an addressing mode.
+- Certain encodings of the ModR/M byte require a second addressing byte (called SIB).
+	- scale field: specifies the scale factor.
+	- index field: specifies the regsiter number of the index register.
+	- base field: specifies the register number of the base register.
+
+- 16-bit addressing forms with the ModR/M byte: [https://www.intel.com/content/dam/develop/public/us/en/documents/325383-sdm-vol-2abcd.pdf#page=41](https://www.intel.com/content/dam/develop/public/us/en/documents/325383-sdm-vol-2abcd.pdf#page=41)
+- 32-bit addressing forms with the ModR/M byte: [https://www.intel.com/content/dam/develop/public/us/en/documents/325383-sdm-vol-2abcd.pdf#page=42](https://www.intel.com/content/dam/develop/public/us/en/documents/325383-sdm-vol-2abcd.pdf#page=42)
+- 32-bit addressing forms with the SIB byte: [https://www.intel.com/content/dam/develop/public/us/en/documents/325383-sdm-vol-2abcd.pdf#page=43](https://www.intel.com/content/dam/develop/public/us/en/documents/325383-sdm-vol-2abcd.pdf#page=43)
+
+
+
+
 ## Intel syntax vs. AT&T syntax
 
 |                   | Intel                     | AT&T                       |
