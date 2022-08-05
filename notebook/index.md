@@ -42,4 +42,3 @@ title: Table of Contents
 - Misc
 	- [Cython](https://zulinx86.com/notebook/misc/cython)
 	- [Hash](https://zulinx86.com/notebook/misc/hash)
-	- [English](https://zulinx86.com/notebook/misc/english)
