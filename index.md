@@ -4,13 +4,14 @@ title: Takahiro Itazuri's Homepage
 
 ![portrait](img/portrait.jpeg)
 
-Software Dev Engineer I @ Evi Technologies Limited. (subsidiary of Amazon)
+Software Dev Engineer I @ Amazon Web Services
 - Working on [Firecracker](https://firecracker-microvm.github.io/)
-	- [[Commits]](https://github.com/firecracker-microvm/firecracker/commits/main?author=zulinx86)
-	- [[Issues & PRs]](https://github.com/firecracker-microvm/firecracker/issues?q=involves%3Azulinx86)
+	- [Commits](https://github.com/firecracker-microvm/firecracker/commits/main?author=zulinx86)
+	- [Issues & PRs](https://github.com/firecracker-microvm/firecracker/issues?q=involves%3Azulinx86)
 
 
 <br>
+
 ---
 
 ## Interest Areas
@@ -24,6 +25,7 @@ Software Dev Engineer I @ Evi Technologies Limited. (subsidiary of Amazon)
 
 
 <br>
+
 ---
 
 ## Skills
@@ -44,20 +46,22 @@ Software Dev Engineer I @ Evi Technologies Limited. (subsidiary of Amazon)
 
 
 ### Certifications
+- [EC2 Core Subject Matter Expert (SME)](https://www.credly.com/badges/8c7a45f3-0d7c-437e-a4b1-954ce17f911c/public_url)
 - [Fundamental Information Technology Engineer Examination](https://www.jitec.ipa.go.jp/2_01english/02examcategories.html)
 - [Applied Information Technology Engineer Examination](https://www.jitec.ipa.go.jp/2_01english/02examcategories.html)
 - [AWS Certified Solutions Architect - Associate](https://aws.amazon.com/certification/certified-solutions-architect-associate/)
 
 
 <br>
+
 ---
 
 ## Biography
 ### Amazon Web Services
-#### Aug. 2022 - Present &nbsp; Software Dev Engineer I
+#### Aug. 2022 - Present &#009; Software Dev Engineer I
 - Working on [Firecracker](https://firecracker-microvm.github.io/)
 
-#### Sept. 2021 - Aug. 2022 &nbsp; Cloud Support Engineer II
+#### Sept. 2021 - Aug. 2022 &#009; Cloud Support Engineer II
 - Premium technical support for AWS services (EC2, EBS, Linux, ElastiCache, EFS, etc...).
 - [EC2 Core Subject Matter Expert (SME)](https://www.credly.com/badges/8c7a45f3-0d7c-437e-a4b1-954ce17f911c/public_url).
 - Hiring and training other support engineers.
@@ -65,43 +69,43 @@ Software Dev Engineer I @ Evi Technologies Limited. (subsidiary of Amazon)
 	- [dynein (DynamoDB CLI written in Rust)](https://github.com/awslabs/dynein)
 	- Internal tools
 
-#### June 2020 - Sept. 2021 &nbsp; Cloud Support Engineer I
+#### June 2020 - Sept. 2021 &#009; Cloud Support Engineer I
 - Premium technical support for AWS services (EC2, EBS, Linux, ElastiCache, EFS, etc...).
 - [EC2 Core Subject Matter Expert (SME)](https://www.credly.com/badges/8c7a45f3-0d7c-437e-a4b1-954ce17f911c/public_url).
 
-#### Aug. 2019 - May 2020 &nbsp; Cloud Support Associate II
+#### Aug. 2019 - May 2020 &#009; Cloud Support Associate II
 - Premium technical support for AWS services (EC2, EBS, Linux, ElastiCache, EFS, etc...).
 
-#### Apr. 2019 - Aug. 2019 &nbsp; Cloud Support Associate I
+#### Apr. 2019 - Aug. 2019 &#009; Cloud Support Associate I
 - Premium technical support for basic AWS services (EC2, EBS, ELB, VPC, Route 53, S3, IAM, CloudFront, RDS, etc...).
 
 
 ### FOVE Inc.
-#### Aug. 2018 - Dec. 2018 &nbsp; Research Internship
+#### Aug. 2018 - Dec. 2018 &#009; Research Internship
 - Research theme: Video Sementic Segmentation
 
 
-### [IPA Exploratory IT Human Resource Project (MITOU Program)](https://www.ipa.go.jp/english/humandev/third.html)
-#### June 2017 - Mar. 2018 &nbsp; 
-- Project title: [Software to improve sports skills enjoyably with music](https://www.ipa.go.jp/jinzai/mitou/2017/gaiyou_ig-2.html)
-- Features:
-	 - [Sonify](https://en.wikipedia.org/wiki/Data_sonification) body movement in real-time with smart-phone.
-	 - Recommend songs which match the beat with body movement.
-- Final presentation: [YouTube](https://www.youtube.com/watch?v=3AcnrROn8rk)
+<br>
 
+---
 
+## Education
 ### Waseda University
 #### Apr. 2017 - Mar. 2019 &nbsp; Master of Engineering
-- Belonging: [Morhishima Lab.](http://www.mlab.phys.waseda.ac.jp/?lang=en), [Master Department of Pure and Applied Physics](http://www.phys.waseda.ac.jp/), Graduate School of Advanced Science and Engineering
+- Belonging: [Morhishima Lab.](http://www.mlab.phys.waseda.ac.jp/?lang=en), Master Department of Pure and Applied Physics, Graduate School of Advanced Science and Engineering
 - [Research projects & publications](/research.html)
+- [IPA Exploratory IT Human Resource Project (MITOU Program)](https://www.ipa.go.jp/english/humandev/third.html)
+	- Project title: [Software to improve sports skills enjoyably with music](https://www.ipa.go.jp/jinzai/mitou/2017/gaiyou_ig-2.html)
+	- Final presentation: [YouTube](https://www.youtube.com/watch?v=3AcnrROn8rk)
 - GPA: 3.87
 
 #### Apr. 2013 - Mar. 2017 &nbsp; Bachelor of Science
-- Belonging: [Morhishima Lab.](http://www.mlab.phys.waseda.ac.jp/?lang=en), [Department of Physics](http://www.phys.waseda.ac.jp/), School of Advanced Science and Engineering
+- Belonging: [Morhishima Lab.](http://www.mlab.phys.waseda.ac.jp/?lang=en), Department of Physics, School of Advanced Science and Engineering
 - GPA: 3.26
 
 
 <br>
+
 ---
 
 ## Hobby
@@ -143,6 +147,7 @@ Software Dev Engineer I @ Evi Technologies Limited. (subsidiary of Amazon)
 
 
 <br>
+
 ---
 
 ## Links

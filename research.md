@@ -22,8 +22,9 @@ title: Research
 		</td>
 		<td>
 			<h3>What Do Adversarially Robust Models Look At?</h3>
-			<b>Takahiro Itazuri</b>, Yoshihiro Fukuhara, Hirokatsu Kataoka, and Shigeo Morishima<br>
-			<a href="https://arxiv.org/abs/1905.07666">[paper]</a>
+			Yoshihiro Fukuhara, <b>Takahiro Itazuri</b>, Hirokatsu Kataoka, and Shigeo Morishima<br>
+			@ Journal of Japan Society for Precision Engineering<br>
+			<a href="https://arxiv.org/abs/1905.07666">[paper]</a><a herf="https://www.jstage.jst.go.jp/article/jjspe/87/1/87_83/_article/-char/en">[j-stage]</a>
 		</td>
 	</tr>
 	<tr>
@@ -73,6 +74,9 @@ title: Research
 </table>
 
 ## Publications
+### Journal
+1. Yoshihiro Fukuhara, **Takahiro Itazuri**, Hirokatsu Kataoka, and Shigeo Morishima, "Property Analysis of Adversarially Robust Representation", Journal of Japan Society for Precision Engineering (JSPE), 2021, Vol.87, Issue 1, Pages 83-91. [[paper]](https://www.jstage.jst.go.jp/article/jjspe/87/1/87_83/_article/-char/en)
+
 ### Full Papers
 1. Takashi Oya, Shohei Iwase, Ryota Natsume, **Takahiro Itazuri**, Shugo Yamaguchi, and Shigeo Morishima, "Do We Need Sound for Sound Source Localization?", Computer Vision - ACCV 2020, pp.119-136, 2020. [[paper]](https://openaccess.thecvf.com/content/ACCV2020/papers/Oya_Do_We_Need_Sound_for_Sound_Source_Localization_ACCV_2020_paper.pdf)
 1. Tomoyuki Suzuki, **Takahiro Itazuri**, Kensho Hara, and Hisokatsu Kataoka, "Learning Spatiotemporal 3D Convolution with Video Order Self-Supervision", the 1st Person In Context Workshop (PIC) at ECCV 2018, pp.590-598, 2018. [[paper]](https://openaccess.thecvf.com/content_ECCVW_2018/papers/11130/Suzuki_Learning_Spatiotemporal_3D_Convolution_with_Video_Order_Self-Supervision_ECCVW_2018_paper.pdf)
@@ -81,7 +85,4 @@ title: Research
 ### Poster Presentations
 1. Tsuchiya Yukitaka, **Takahiro Itazuri**, Ryota Natsume, Shintaro Yamamoto, Takuya Kato, and Shigeo Morishima, "Generating Video from Single Image and Sound", In Sight and Sound Workshop at CVPR 2019, 2019. [[paper]](http://openaccess.thecvf.com/content_CVPRW_2019/papers/Sight%20and%20Sound/Yukitaka_Tsuchiya_Generating_Video_from_Single_Image_and_Sound_CVPRW_2019_paper.pdf)
 1. **Takahiro Itazuri**, Tsukasa Fukusato, Shugo Yamaguchi, and Shigeo Morishima, "Court-Aware Volleyball Video Summarization", ACM SIGGRAPH 2017, No.74, 2017. [[paper]](https://dl.acm.org/doi/10.1145/3102163.3102204)
-
-### arXiv Papers
-1. **Takahiro Itazuri**, Yoshihiro Fukuhara, Hirokatsu Kataoka, and Shigeo Morishima, "What Do Adversarially Robust Models Look At?", arXiv:1905.07666, 2019. [[paper]](https://arxiv.org/abs/1905.07666)
 
