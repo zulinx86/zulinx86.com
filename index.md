@@ -31,11 +31,12 @@ Software Dev Engineer I @ Amazon Web Services
 ## Skills
 ### Programming Languages
 - Rust
-- C++
-- C
-- Assembly (x86)
-- JavaScript
+- C/C++
 - Python
+- Shell Script
+- Assembly (x86)
+- JavaScript / TypeScript
+- Go
 
 
 ### Technical Skills / Knowledge
@@ -43,6 +44,7 @@ Software Dev Engineer I @ Amazon Web Services
 - Linux
 - PyTorch
 - OpenCV
+- React / Next.js
 
 
 ### Certifications
