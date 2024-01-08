@@ -4,8 +4,8 @@ title: Takahiro Itazuri's Homepage
 
 ![portrait](img/portrait.jpeg)
 
-Software Dev Engineer I @ Amazon Web Services
-- Working on [Firecracker](https://firecracker-microvm.github.io/)
+Software Development Engineer II @ Amazon Web Services
+- Maintaining [Firecracker](https://firecracker-microvm.github.io/)
 	- [Commits](https://github.com/firecracker-microvm/firecracker/commits/main?author=zulinx86)
 	- [Issues & PRs](https://github.com/firecracker-microvm/firecracker/issues?q=involves%3Azulinx86)
 
@@ -42,9 +42,11 @@ Software Dev Engineer I @ Amazon Web Services
 ### Technical Skills / Knowledge
 - Virtualization
 - Linux
+- AWS
 - PyTorch
 - OpenCV
 - React / Next.js
+
 
 
 ### Certifications
@@ -60,8 +62,16 @@ Software Dev Engineer I @ Amazon Web Services
 
 ## Biography
 ### Amazon Web Services
-#### Aug. 2022 - Present &#009; Software Dev Engineer I
-- Working on [Firecracker](https://firecracker-microvm.github.io/)
+#### Nov. 2023 - Present $#009; Software Development Enginner II
+- Maintainer of [Firecracker](https://firecracker-microvm.github.io/)
+	- [Commits](https://github.com/firecracker-microvm/firecracker/commits/main?author=zulinx86)
+	- [Issues & PRs](https://github.com/firecracker-microvm/firecracker/issues?q=involves%3Azulinx86)
+- Collaboration with other AWS service teams.
+ 
+#### Aug. 2022 - Nov. 2023 &#009; Software Development Engineer I
+- Maintainer of [Firecracker](https://firecracker-microvm.github.io/)
+	- [Commits](https://github.com/firecracker-microvm/firecracker/commits/main?author=zulinx86)
+	- [Issues & PRs](https://github.com/firecracker-microvm/firecracker/issues?q=involves%3Azulinx86)
 
 #### Sept. 2021 - Aug. 2022 &#009; Cloud Support Engineer II
 - Premium technical support for AWS services (EC2, EBS, Linux, ElastiCache, EFS, etc...).
