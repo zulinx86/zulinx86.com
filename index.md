@@ -62,7 +62,7 @@ Software Development Engineer II @ Amazon Web Services
 
 ## Biography
 ### Amazon Web Services
-#### Nov. 2023 - Present $#009; Software Development Enginner II
+#### Nov. 2023 - Present &#009; Software Development Enginner II
 - Maintainer of [Firecracker](https://firecracker-microvm.github.io/)
 	- [Commits](https://github.com/firecracker-microvm/firecracker/commits/main?author=zulinx86)
 	- [Issues & PRs](https://github.com/firecracker-microvm/firecracker/issues?q=involves%3Azulinx86)
