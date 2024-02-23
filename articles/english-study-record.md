@@ -3,7 +3,7 @@ title: 海外エンジニアの英語学習記録
 emoji: "🌍"
 type: "idea"
 topics: ["english"]
-published: true
+published: false
 ---
 
 # 背景 / モチベーション
