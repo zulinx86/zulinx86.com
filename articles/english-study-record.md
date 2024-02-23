@@ -237,17 +237,18 @@ Booking.com. Booking.yeah.
 **学習時間**: 50m
 
 **学習内容**
+- [atsueigo 発音マスタークラス](https://masterclass.atsueigo.com/pronunciation) (復習)
+  - Ch.1.9 母音 /u/
+  - Ch.1.10 母音 /aɪ/
+  - Ch.1.11 母音 /aʊ/
+  - Ch.1.12 母音 /oʊ/
+  - Ch.1.13 母音 /ɔɪ/
+  - Ch.1.14 母音 /eɪ/
+  - Ch.1.15 子音 /p//b/
 - [atsueigo 発音マスタークラス](https://masterclass.atsueigo.com/pronunciation)
   - Ch.2.11 文強勢 - 口語で起きる弱化
   - Ch.2.12 文強勢 - 句動詞
   - Ch.2.13 文強勢 - セットフレーズ、複合名詞
-  - Ch.1.9 母音 /u/ (復習)
-  - Ch.1.10 母音 /aɪ/ (復習)
-  - Ch.1.11 母音 /aʊ/ (復習)
-  - Ch.1.12 母音 /oʊ/ (復習)
-  - Ch.1.13 母音 /ɔɪ/ (復習)
-  - Ch.1.14 母音 /eɪ/ (復習)
-  - Ch.1.15 子音 /p//b/ (復習)
 
 :::
 
