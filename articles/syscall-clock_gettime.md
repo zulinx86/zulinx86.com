@@ -3,7 +3,7 @@ title: clock_gettime() system call
 emoji: "🕒"
 type: "idea"
 topics: ["linux", "clock"]
-published: false
+published: true
 ---
 
 # クロックの種類
