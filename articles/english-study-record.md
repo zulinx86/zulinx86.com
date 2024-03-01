@@ -275,3 +275,59 @@ Booking.com. Booking.yeah.
 - しっかり 10 日サボりました。諸々忙しかったり、モチベーションが出なかったり。ちゃんと学習再開します。
 
 :::
+
+
+:::details 2024-02-29
+
+**学習時間**: 30m
+
+**学習内容**
+- 単語・フレーズ
+  - [catch /kætʃ/](https://dictionary.cambridge.org/ja/dictionary/english/catch): a hidden problem or disadvantage
+    - 例文 1: There is no catch.
+      - The offer is genuinely free; there is no catch.
+      - YOu can use this servic as much as you like. There is no catch.
+    - 例文 2: What's the catch?
+      - The deal seems too good to be true. What's the catch?
+      - He said he'd do all the work for a very low price. What's the catch?
+  - [stoked /stoʊkt/](https://dictionary.cambridge.org/ja/dictionary/english/stoked): excited and very happy about something
+    - 例文: be stoked to
+      - She was stoked to receive an acceptance letter from her first-choice university.
+      - They were stoked to see their favorite band live for the first time.
+  - [stoke /stoʊk/](https://dictionary.cambridge.org/ja/dictionary/english/stoke): to add fuel to a large fire so that it burns well; to encourage bad ideas or feelings in a lot of people
+    - 例文 1
+      - The campfire started to die down, so we added more wood to stoke it.
+      - He wrote an article to stoke debate on the issue.
+    - 例文 2
+      - Fears about the economy were stoked by the latest unemployment figures.
+      - The company's announcement served to stoke excitement among its customers.
+  - [admittedly /əd'mɪtɪdlɪ/](https://dictionary.cambridge.org/ja/dictionary/english/admittedly): used when you are agreeing that something is true, especially unwillingly
+    - 例文
+      - Admittedly, the task was more challenging than we initially thought.
+      - Admittedly, there are some flaws in the plan, but it's a good starting point.
+  - [caveat /kæviət/](https://dictionary.cambridge.org/ja/dictionary/english/caveat): a warning to consider something before taking any more action
+    - 例文
+      - The lawyer emphasized the caveat in the contract that limited the company's liability.
+      - Before purchasing the house, they were informed of a caveat regarding the property's history of flooding.
+  - [rationale /.ræʃə'næl/](https://dictionary.cambridge.org/ja/dictionary/english/rationale): the reasons or intentions that cause a particular set of beliefs or actions
+    - 例文
+      - The rationale behind the new policy was to improve public health.
+      - He explained the rationale for the changes in the curriculum to the parents.
+  - [full-fledged /fʊl fledʒd/](https://dictionary.cambridge.org/ja/dictionary/english/full-fledged): completely developed or trained
+    - 例文
+      - After years of training, she became a full-fledged lawyer.
+      - The software has evolved from a simple tool to a full-fledged application.
+  - [in a nutshell /ɪnə 'nʌt.ʃel/](https://dictionary.cambridge.org/ja/dictionary/english/in-a-nutshell?q=in%2Ba%2Bnutshell): very briefly, giving only the main points
+    - 例文
+      - In a nutshell, the plan aims to reduce costs without sacrificing quality.
+      - Can you explain the theory in a nutshell?
+  - [bloated /'bloʊtɪd/](https://dictionary.cambridge.org/ja/dictionary/english/bloated#google_vignette): swollen from containing too much air, liquid, or food
+    - 例文
+      - After eating too much at dinner, I felt bloated and uncomfortable.
+      - The software become bloated with unnecessary features, slowing it down.
+  - [outdo /.aʊ'duː/](https://dictionary.cambridge.org/ja/dictionary/english/outdo): to be or do something better than someone else
+    - 例文
+      - She always tries to outdo her previous performance.
+      - This year's festival aims to outdo last year's in both scale and quality.
+
+:::
