@@ -19,46 +19,8 @@ published: true
 上記の通り、`clockid` 引数を通して、どのクロックから時間を取得するかを選ぶことができる。
 
 全てはカバーしないが、以下のようなクロックの種類がある。
-
->        CLOCK_REALTIME
->               A settable system-wide clock that measures real (i.e., wall-
->               clock) time.  Setting this clock requires appropriate privi‐
->               leges.  This clock is affected by discontinuous jumps in the
->               system time (e.g., if the system administrator manually
->               changes the clock), and by the incremental adjustments per‐
->               formed by adjtime(3) and NTP.
-
->        CLOCK_MONOTONIC
->               A nonsettable system-wide clock that represents monotonic time
->               since—as described by POSIX—"some unspecified point in the
->               past".  On Linux, that point corresponds to the number of sec‐
->               onds that the system has been running since it was booted.
->
->               The CLOCK_MONOTONIC clock is not affected by discontinuous
->               jumps in the system time (e.g., if the system administrator
->               manually changes the clock), but is affected by the incremen‐
->               tal adjustments performed by adjtime(3) and NTP.  This clock
->               does not count time that the system is suspended.  All
->               CLOCK_MONOTONIC variants guarantee that the time returned by
->               consecutive calls will not go backwards, but successive calls
->               may—depending on the architecture—return identical (not-
->               increased) time values.
-
->        CLOCK_BOOTTIME (since Linux 2.6.39; Linux-specific)
->               A nonsettable system-wide clock that is identical to
->               CLOCK_MONOTONIC, except that it also includes any time that
->               the system is suspended.  This allows applications to get a
->               suspend-aware monotonic clock without having to deal with the
->               complications of CLOCK_REALTIME, which may have discontinu‐
->               ities if the time is changed using settimeofday(2) or similar.
-
->        CLOCK_PROCESS_CPUTIME_ID (since Linux 2.6.12)
->               This is a clock that measures CPU time consumed by this
->               process (i.e., CPU time consumed by all threads in the
->               process).  On Linux, this clock is not settable.
-
-- `CLOCK_REALTIME`: 変更することが可能な、Unix Epoch (1970-01-01 00:00:00 UT) から現在までの経過時間を計測するクロック。
-- `CLOCK_MONOTONIC`: 起動してからシステムが稼働している間は単調に増え続けるクロック。`CLOCK_REALTIME` と違って、変更することができないため、処理時間を計測したりするのに使える。
+- `CLOCK_REALTIME`: Unix Epoch (1970-01-01 00:00:00 UT) から現在のシステム上の時刻までの経過時間を計測するクロック。管理者がシステムの時刻を変更することが可能であるため、それの影響を受ける。
+- `CLOCK_MONOTONIC`: 起動してからシステムが稼働している間、単調に増え続けるクロック。`CLOCK_REALTIME` と違って、変更することができないため、処理時間を計測したりするのに使える。
 - `CLOCK_BOOTTIME`: `CLOCK_MONOTONIC` とほぼ同様だが、システムが休止 (suspended) な時間もカウントするクロック。
 - `CLOCK_PROCESS_CPUTIME_ID`: 呼び出したプロセスに使用された CPU 時間を計測するクロック。
 - `CLOCK_THREAD_CPUTIME_ID`: 呼び出したスレッドに使用された CPU 時間を計測するクロック。
@@ -78,7 +40,7 @@ published: true
        };
 ```
 
-上記の通り、秒とナノ秒で構成され、コンピュータが扱いやすい形になっている。
+秒とナノ秒で構成され、コンピュータが扱いやすい形になっている。
 
 ## `struct tm`
 
@@ -103,11 +65,13 @@ published: true
        };
 ```
 
-より人間向けな時間の構造体となっている。
+より人間向けな日時の構造体となっている。
 
 
 # サンプルコード
 ## `CLOCK_REALTIME`
+
+`CLOCK_REALTIME` を使って時刻を取得し、それを `struct tm` に変換して表示する。
 
 ```c
 #include <stdio.h>
@@ -139,10 +103,12 @@ Mon Feb 26 15:27:49 UTC 2024
 CLOCK_REALTIME (UTC):   2024-02-26 15:27:49
 ```
 
-ちゃんとシステムで設定されている日時と一致している。
+`date` コマンドで表示されるシステムの日時と一致している。
 
 
 ## `CLOCK_MONOTONIC`
+
+`CLOCK_MONOTONIC` を使って、秒とナノ秒を表示する。
 
 ```c
 #include <stdio.h>
@@ -168,10 +134,20 @@ $ cat /proc/uptime; ./a.out
 CLOCK_MONOTONIC time: 38587 seconds, 63955741 nanoseconds
 ```
 
-ちゃんとシステムの稼働時間 (uptime) と一致している。
+ちゃんとシステムの稼働時間 (`/proc/uptime`) と一致している。
 
 
 ## `CLOCK_PROCESS_CPUTIME_ID` / `CLOCK_THREAD_CPUTIME_ID`
+
+CPU が使われた時間を、プロセス目線とスレッド目線で計測する。
+CPU を意図的に使用するために、エラトステネスの篩を使って素数判定をする関数を使う。
+
+処理手順は以下の通り。
+1. 素数判定プログラムの実行
+1. スレッドの作成
+1. スレッド内で素数判定プログラムの実行
+1. スレッド内で `CLOCK_THREAD_CPUTIME_ID` を使って時間計測
+1. 親プロセスに戻ってきて `CLOCK_PROCESS_CPUTIME_ID` を使って時間計測
 
 ```c
 #include <stdio.h>
