@@ -117,6 +117,8 @@ https://os.phil-opp.com/freestanding-rust-binary/#the-eh-personality-language-it
 >
 > This sets the panic strategy to `abort` for both the `dev` profile (used for `cargo build`) and the `release` profile (used for `cargo build --release`). Now the `eh_personality` language item should no longer be required.
 
+So let's set `panic = "abort"` in `Cargo.toml`.
+
 # No Main Function
 
 Now we should have fixed two of three errors. Let's compile it without `println!()`!
