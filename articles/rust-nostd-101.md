@@ -1,7 +1,7 @@
 ---
 title: 【Rust】"Hello world!" without Standard Library
 emoji: "🦀"
-type: "idea"
+type: "tech"
 topics: ["rust"]
 published: true
 ---

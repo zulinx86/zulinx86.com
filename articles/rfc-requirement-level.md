@@ -1,7 +1,7 @@
 ---
 title: 要件レベルを記述するキーワード
 emoji: "🌍"
-type: "idea"
+type: "tech"
 topics: ["rfc"]
 published: false
 ---

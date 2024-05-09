@@ -1,7 +1,7 @@
 ---
 title: clock_gettime() system call
 emoji: "🕒"
-type: "idea"
+type: "tech"
 topics: ["linux", "clock"]
 published: true
 ---

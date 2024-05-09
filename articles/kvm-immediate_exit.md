@@ -1,7 +1,7 @@
 ---
 title: 【KVM】kvm_run.immediate_exit
 emoji: "🐧"
-type: "idea"
+type: "tech"
 topics: ["linux", "kvm"]
 published: true
 ---

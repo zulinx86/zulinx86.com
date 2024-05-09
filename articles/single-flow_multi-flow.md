@@ -1,7 +1,7 @@
 ---
 title: 【検証】シングルフロートラフィックとマルチフロートラフィックの帯域幅
 emoji: "🕸️"
-type: "idea"
+type: "tech"
 topics: ["network", "aws", "ec2"]
 published: true
 ---
