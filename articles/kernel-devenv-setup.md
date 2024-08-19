@@ -17,7 +17,7 @@ published: true
 $ cd ${WORKDIR}
 $ git clone git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git
 $ sudo apt install make gcc flex bison libelf-dev libssl-dev -y
-$ cd linux-next
+$ cd linux
 $ make defconfig
 $ make -j$(nproc)
 ```
@@ -44,8 +44,8 @@ $ make -j$(nproc)
 # QEMU で VM の起動
 
 ```
-$ sudo apt install qemu-system-x86
-$ qemu-systemx-86_64 \
+$ sudo apt install qemu-system-x86 -y
+$ qemu-system-x86_64 \
     -boot c \
     -m 8G \
     -kernel ${WORKDIR}/linux/arch/x86_64/boot/bzImage \
