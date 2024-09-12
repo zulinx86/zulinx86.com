@@ -2,7 +2,7 @@
 title: 【x86-64】メモリアドレス変換（セグメンテーション / ページング）
 emoji: "🐧"
 type: "tech"
-topics: ["x86-64", "memory", "segmentation", "paging"]
+topics: ["x86", "memory", "segmentation", "paging"]
 published: true
 ---
 
