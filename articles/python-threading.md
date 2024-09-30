@@ -227,7 +227,7 @@ class t(threading.Thread):
         print(
             "Thread:",
             self.name,
-            "starting at",
+            "ending at",
             datetime.datetime.now()
         )
 
@@ -263,8 +263,8 @@ $ python3 main.py
 Thread: MainThread starting at 2024-09-23 15:04:12.154180
 Thread: Thread-1 starting at 2024-09-23 15:04:12.154412
 Thread: Thread-2 starting at 2024-09-23 15:04:12.154749
-Thread: Thread-1 starting at 2024-09-23 15:04:15.157531
-Thread: Thread-2 starting at 2024-09-23 15:04:15.157857
+Thread: Thread-1 ending at 2024-09-23 15:04:15.157531
+Thread: Thread-2 ending at 2024-09-23 15:04:15.157857
 Thread: MainThread ending at 2024-09-23 15:04:15.158100
 ```
 
