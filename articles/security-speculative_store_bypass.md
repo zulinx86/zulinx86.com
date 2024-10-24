@@ -354,6 +354,60 @@ The return values of `arm_smccc_1_1_invoke()` used in `spectre_v4_get_cpu_fw_mit
 #define SMCCC_ARCH_WORKAROUND_RET_UNAFFECTED	1
 ```
 
+### Hardware Capability
+
+#### KERNEL_HWCAP_SSBS
+
+[https://elixir.bootlin.com/linux/v6.11.5/source/arch/arm64/include/asm/hwcap.h#L91](https://elixir.bootlin.com/linux/v6.11.5/source/arch/arm64/include/asm/hwcap.h#L91)
+```c
+/*
+ * For userspace we represent hwcaps as a collection of HWCAP{,2}_x bitfields
+ * as described in uapi/asm/hwcap.h. For the kernel we represent hwcaps as
+ * natural numbers (in a single range of size MAX_CPU_FEATURES) defined here
+ * with prefix KERNEL_HWCAP_ mapped to their HWCAP{,2}_x counterpart.
+ *
+ * Hwcaps should be set and tested within the kernel via the
+ * cpu_{set,have}_named_feature(feature) where feature is the unique suffix
+ * of KERNEL_HWCAP_{feature}.
+ */
+#define __khwcap_feature(x)		const_ilog2(HWCAP_ ## x)
+// snipped
+#define KERNEL_HWCAP_SSBS		__khwcap_feature(SSBS)
+```
+
+#### HWCAP_SSBS
+
+[https://elixir.bootlin.com/linux/v6.11.5/source/arch/arm64/include/uapi/asm/hwcap.h#L54](https://elixir.bootlin.com/linux/v6.11.5/source/arch/arm64/include/uapi/asm/hwcap.h#L54)
+```c
+#define HWCAP_SSBS		(1 << 28)
+```
+
+[https://elixir.bootlin.com/linux/v6.11.5/source/Documentation/arch/arm64/elf_hwcaps.rst#L157-L158](https://elixir.bootlin.com/linux/v6.11.5/source/Documentation/arch/arm64/elf_hwcaps.rst#L157-L158)
+```
+HWCAP_SSBS
+    Functionality implied by ID_AA64PFR1_EL1.SSBS == 0b0010.
+```
+
+[https://elixir.bootlin.com/linux/v6.11.5/source/arch/arm64/kernel/cpufeature.c#L2989](https://elixir.bootlin.com/linux/v6.11.5/source/arch/arm64/kernel/cpufeature.c#L2989)
+```c
+static const struct arm64_cpu_capabilities arm64_elf_hwcaps[] = {
+// snipped
+	HWCAP_CAP(ID_AA64PFR1_EL1, SSBS, SSBS2, CAP_HWCAP, KERNEL_HWCAP_SSBS),
+// snipped
+};
+```
+
+#### `hwcap_str[]`
+
+[https://elixir.bootlin.com/linux/v6.11.5/source/arch/arm64/kernel/cpuinfo.c#L79](https://elixir.bootlin.com/linux/v6.11.5/source/arch/arm64/kernel/cpuinfo.c#L79)
+```c
+static const char *const hwcap_str[] = {
+// snipped
+	[KERNEL_HWCAP_SSBS]		= "ssbs",
+// snipped
+};
+```
+
 
 ### Mitigation Selection
 
