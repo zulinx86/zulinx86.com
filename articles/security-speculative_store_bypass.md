@@ -61,7 +61,7 @@ published: true
         - If `SMCCC_ARCH_WORKAROUND_2` is supported, calls `SMCCC_ARCH_WORKAROUND_2` with `1` (to apply it immediately).
             - In the dynamic mode, calls `SMCCC_ARCH_WORKAROUND_2` with `1` on kernel entry and with `0` on kernel exit.
     - Userspace mitigation via `prctl()`:
-        - 
+        - `PSTATE.SSBS = 0` on the current process.
 
 ### Sysfs File
 
