@@ -1,5 +1,3 @@
 theme: jekyll-theme-hacker
 title: zulinx86.com
 description: Takahiro Itazuri's Homepage
-plugins:
-  - jekill-toc
