@@ -618,6 +618,51 @@ config ARM64_ERRATUM_3194386
 
 The problem can be worked around by issuing "Speculation Barrier (SB)" or "Instruction Synchronization Barrier (ISB)" after setting PSTATE.SSBS to 0.
 
+[https://elixir.bootlin.com/linux/v6.11.4/source/arch/arm64/kernel/cpu_errata.c#L767](https://elixir.bootlin.com/linux/v6.11.4/source/arch/arm64/kernel/cpu_errata.c#L767)
+```c
+const struct arm64_cpu_capabilities arm64_errata[] = {
+// snipped
+#ifdef CONFIG_ARM64_ERRATUM_3194386
+	{
+		.desc = "SSBS not fully self-synchronizing",
+		.capability = ARM64_WORKAROUND_SPECULATIVE_SSBS,
+		ERRATA_MIDR_RANGE_LIST(erratum_spec_ssbs_list),
+	},
+#endif
+// snipped
+};
+```
+
+[https://elixir.bootlin.com/linux/v6.11.4/source/arch/arm64/kernel/cpu_errata.c#L435](https://elixir.bootlin.com/linux/v6.11.4/source/arch/arm64/kernel/cpu_errata.c#L435)
+```c
+#ifdef CONFIG_ARM64_ERRATUM_3194386
+static const struct midr_range erratum_spec_ssbs_list[] = {
+	MIDR_ALL_VERSIONS(MIDR_CORTEX_A76),
+	MIDR_ALL_VERSIONS(MIDR_CORTEX_A77),
+	MIDR_ALL_VERSIONS(MIDR_CORTEX_A78),
+	MIDR_ALL_VERSIONS(MIDR_CORTEX_A78C),
+	MIDR_ALL_VERSIONS(MIDR_CORTEX_A710),
+	MIDR_ALL_VERSIONS(MIDR_CORTEX_A715),
+	MIDR_ALL_VERSIONS(MIDR_CORTEX_A720),
+	MIDR_ALL_VERSIONS(MIDR_CORTEX_A725),
+	MIDR_ALL_VERSIONS(MIDR_CORTEX_X1),
+	MIDR_ALL_VERSIONS(MIDR_CORTEX_X1C),
+	MIDR_ALL_VERSIONS(MIDR_CORTEX_X2),
+	MIDR_ALL_VERSIONS(MIDR_CORTEX_X3),
+	MIDR_ALL_VERSIONS(MIDR_CORTEX_X4),
+	MIDR_ALL_VERSIONS(MIDR_CORTEX_X925),
+	MIDR_ALL_VERSIONS(MIDR_MICROSOFT_AZURE_COBALT_100),
+	MIDR_ALL_VERSIONS(MIDR_NEOVERSE_N1),
+	MIDR_ALL_VERSIONS(MIDR_NEOVERSE_N2),
+	MIDR_ALL_VERSIONS(MIDR_NEOVERSE_N3),
+	MIDR_ALL_VERSIONS(MIDR_NEOVERSE_V1),
+	MIDR_ALL_VERSIONS(MIDR_NEOVERSE_V2),
+	MIDR_ALL_VERSIONS(MIDR_NEOVERSE_V3),
+	{}
+};
+#endif
+```
+
 ### `spec_bar()`
 
 [https://elixir.bootlin.com/linux/v6.11.4/source/arch/arm64/include/asm/barrier.h#L43](https://elixir.bootlin.com/linux/v6.11.4/source/arch/arm64/include/asm/barrier.h#L43)
@@ -1220,6 +1265,25 @@ void __init spectre_v4_patch_fw_mitigation_enable(struct alt_instr *alt,
 | 2020-09-29 | -       | arm64: Pull in task_stack_page() to Spectre-v4 mitigation code | [[commit]](https://github.com/torvalds/linux/commit/5c8b0cbd9d6bac5f40943b5a7d8eac8cb86cbe7f) |
 | 2020-09-29 | -       | arm64: Add support for PR_SPEC_DISABLE_NOEXEC prctl() option | [[commit]](https://github.com/torvalds/linux/commit/780c083a8f840ca9162c7a4090ff5e10d15152a2) |
 | 2021-12-08 | -       | KVM: arm64: Drop unused workaround_flags vcpu field | [[commit]](https://github.com/torvalds/linux/commit/142ff9bddbde757674c7081ffc238cfcffa1859b) [[lore]](https://lore.kernel.org/all/164000884613.23020.16840133765876356033.tip-bot2@tip-bot2/) |
+| 2024-05-08 | [0/4]   | _arm64: errata: Add workaround for Arm errata 3194386 and 3312417_ | [[lore]](https://lore.kernel.org/all/20240508081400.235362-1-mark.rutland@arm.com/) |
+| 2024-05-10 | [1/4]   | arm64: barrier: Restore spec_bar() macro | [[commit]](https://github.com/torvalds/linux/commit/ebfc726eae3f31bdb5fae1bbd74ef235d71046ca) [[lore]](https://lore.kernel.org/all/20240508081400.235362-2-mark.rutland@arm.com/) |
+| 2024-05-10 | [2/4]   | arm64: cputype: Add Cortex-X4 definitions | [[commit]](https://github.com/torvalds/linux/commit/02a0a04676fa7796d9cbc9eb5ca120aaa194d2dd) [[lore]](https://lore.kernel.org/all/20240508081400.235362-3-mark.rutland@arm.com/) |
+| 2024-05-10 | [3/4]   | arm64: cputype: Add Neoverse-V3 definitions | [[commit]](https://github.com/torvalds/linux/commit/0ce85db6c2141b7ffb95709d76fc55a27ff3cdc1) [[lore]](https://lore.kernel.org/all/20240508081400.235362-4-mark.rutland@arm.com/) |
+| 2024-05-10 | [4/4]   | arm64: errata: Add workaround for Arm errata 3194386 and 3312417 | [[commit]](https://github.com/torvalds/linux/commit/7187bb7d0b5c7dfa18ca82e9e5c75e13861b1d88) [[lore]](https://lore.kernel.org/all/20240508081400.235362-5-mark.rutland@arm.com/) |
+| 2024-06-03 | [0/5]   | _arm64: errata: Expand speculative SSBS workaround_ | [[lore]](https://lore.kernel.org/all/20240603111812.1514101-1-mark.rutland@arm.com/) |
+| 2024-06-12 | [1/5]   | arm64: cputype: Add Cortex-X3 definitions | [[commit]](https://github.com/torvalds/linux/commit/be5a6f238700f38b534456608588723fba96c5ab) [[lore]](https://lore.kernel.org/all/20240603111812.1514101-2-mark.rutland@arm.com/) |
+| 2024-06-12 | [2/5]   | arm64: cputype: Add Cortex-A720 definitions | [[commit]](https://github.com/torvalds/linux/commit/add332c40328cf06fe35e4b3cde8ec315c4629e5) [[lore]](https://lore.kernel.org/all/20240603111812.1514101-3-mark.rutland@arm.com/) |
+| 2024-06-12 | [3/5]   | arm64: cputype: Add Cortex-X925 definitions | [[commit]](https://github.com/torvalds/linux/commit/fd2ff5f0b320f418288e7a1f919f648fbc8a0dfc) [[lore]](https://lore.kernel.org/all/20240603111812.1514101-4-mark.rutland@arm.com/) |
+| 2024-06-12 | [4/5]   | arm64: errata: Unify speculative SSBS errata logic | [[commit]](https://github.com/torvalds/linux/commit/ec768766608092087dfb5c1fc45a16a6f524dee2) [[lore]](https://lore.kernel.org/all/20240603111812.1514101-5-mark.rutland@arm.com/) |
+| 2024-06-12 | [5/5]   | arm64: errata: Expand speculative SSBS workaround | [[commit]](https://github.com/torvalds/linux/commit/75b3c43eab594bfbd8184ec8ee1a6b820950819a) [[lore]](https://lore.kernel.org/all/20240603111812.1514101-6-mark.rutland@arm.com/) |
+| 2024-08-01 | [0/3]   | _arm64: errata: Expand speculative SSBS workaround (again)_ | [[lore]](https://lore.kernel.org/all/20240801101803.1982459-1-mark.rutland@arm.com/) |
+| 2024-08-01 | [1/3]   | arm64: cputype: Add Cortex-X1C definitions | [[commit]](https://github.com/torvalds/linux/commit/58d245e03c324d083a0ec3b9ab8ebd46ec9848d7) [[lore]](https://lore.kernel.org/all/20240801101803.1982459-2-mark.rutland@arm.com/) |
+| 2024-08-01 | [2/3]   | arm64: cputype: Add Cortex-A725 definitions | [[commit]](https://github.com/torvalds/linux/commit/9ef54a384526911095db465e77acc1cb5266b32c) [[lore]](https://lore.kernel.org/all/20240801101803.1982459-3-mark.rutland@arm.com/) |
+| 2024-08-01 | [3/3]   | arm64: errata: Expand speculative SSBS workaround (again) | [[commit]](https://github.com/torvalds/linux/commit/adeec61a4723fd3e39da68db4cc4d924e6d7f641) [[lore]](https://lore.kernel.org/all/20240801101803.1982459-4-mark.rutland@arm.com/) |
+| 2024-09-30 | [0/2]   | _arm64: errata: Expand speculative SSBS workaround once more_ | [[lore]](https://lore.kernel.org/all/20240930111705.3352047-1-mark.rutland@arm.com/) |
+| 2024-10-01 | [1/2]   | arm64: cputype: Add Neoverse-N3 definitions | [[commit]](https://github.com/torvalds/linux/commit/924725707d80bc2588cefafef76ff3f164d299bc) [[lore]](https://lore.kernel.org/all/20240930111705.3352047-2-mark.rutland@arm.com/) |
+| 2024-10-01 | [2/2]   | arm64: errata: Expand speculative SSBS workaround once more | [[commit]](https://github.com/torvalds/linux/commit/081eb7932c2b244f63317a982c5e3990e2c7fbdd) [[lore]](https://lore.kernel.org/all/20240930111705.3352047-3-mark.rutland@arm.com/) |
+| 2024-10-04 | -       | arm64: Subscribe Microsoft Azure Cobalt 100 to erratum 3194386 | [[commit]](https://github.com/torvalds/linux/commit/3eddb108abe3de6723cc4b77e8558ce1b3047987) [[lore]](https://lore.kernel.org/all/20241003225239.321774-1-eahariha@linux.microsoft.com/) |
 
 
 
