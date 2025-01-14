@@ -89,7 +89,7 @@ type Person {
 }
 ```
 
-同じ型の値のリストを利用することもできる。
+同じ型の値の集合として、リスト (List) を利用することもできる。
 
 ```
 type Person {
@@ -396,6 +396,188 @@ query Hero($episode: Episode, $withFriends: Boolean!) {
     }
 }
 ```
+
+## ページネーション (Pagination)
+
+複数のオブジェクトの関係を表現する方法として最もシンプルな方法は、リストである。
+
+例
+```
+query {
+    hero {
+        name
+        friends {
+            name
+        }
+    }
+}
+```
+```
+{
+    "data": {
+        "hero": {
+            "name": "R2-D2",
+            "friends": [
+                {
+                    "name": "Luke Skywalker"
+                },
+                {
+                    "name": "Han Solo"
+                },
+                {
+                    "name": "Leia Organa"
+                }
+            ]
+        }
+    }
+}
+```
+
+リスト内の要素数が大きいため、クライアントが返して欲しい要素の数を指定したいような場合には、スライス (Slice) を利用することができる。
+
+例
+```
+query {
+    hero {
+        name
+        friends(first: 2) {
+            name
+        }
+    }
+}
+```
+
+上記の例では、リストの最初の 2 つ要素を取得していたが、追加でさらに 2 つの要素を取得したいといった場合に対応できるのが、ページネーション (Pagination) である。
+
+ページネーションのシンプルな実装方法として、オフセットベースページネーション (Offset-based pagination) がある。
+リスト内の最初の 2 つを飛ばした次の 2 つを要求する場合に、`friends(first: 2, offset: 2)` のようなクエリを使う方法である。
+非常にシンプルではあるが、最初のクエリと次に続くクエリの間でデータ更新があった場合などに、同じ要素を返してしまう可能性や特定の要素が飛ばされてしまう場合があるという問題がある。
+
+そこで、一般的なページネーションの実装として用いられるのが、カーソルベースページネーション (Cursor-based pagination) である。
+具体的には `friends(first: 2, after: $friendId)` や `friends(first: 2, after: $friendCursor)` のように、仮にデータ更新が前のクエリと現在のクエリの間で発生しても取得し始める場所が一意に特定できるようなカーソルという識別子を渡す方法である。
+このカーソルの情報を必ず返すようにし、そのカーソルを次のクエリの引数に含めることで、前のクエリの続きを取得することができる。
+
+このカーソル情報を返り値に含めるために、多くの場合は単一の要素を示す `node` とそれを束ねる `edges` を使用し、`edges` の中にカーソルの情報も含める。
+
+```
+query {
+    hero {
+        name
+        friends(first: 2) {
+            edges {
+                node {
+                    name
+                }
+                cursor
+            }
+        }
+    }
+}
+```
+
+リストが全ての要素を返し切ったことを知る方法として、空のスライスが返されるまで繰り返す方法がある。
+しかし、最後まで到達したことを知らせる情報があれば、空を確認するための追加のリクエストを減らすことができる。
+これを実現するために、多くの場合、以下のようなクエリが利用される。
+
+```
+query {
+    hero {
+        name
+        friends(first: 2) {
+            totalCount
+            edges {
+                node {
+                    name
+                }
+                cursor
+            }
+            pageInfo {
+                endCursor
+                hasNextPage
+            }
+        }
+    }
+}
+```
+
+以上のことを踏まえて、多くの場合、以下のような型システムを利用する。
+
+```
+interface Character {
+    id: ID!
+    name: String!
+    friends: [Character]
+    friendsConnection(first: Int, after: ID): FriendsConnection!
+    appearsIn: [Episode]!
+}
+
+type FriendsConnection {
+    totalCount: Int
+    edges: [FriendsEdge]
+    friends: [Character]
+    pageInfo: PageInfo!
+}
+
+type FriendsEdge {
+    cursor: ID!
+    node: Character
+}
+
+type PageInfo {
+    startCursor: ID
+    endCursor: ID
+    hasNextPage: Boolean!
+}
+```
+```
+hero {
+    name
+    friendsConnection(first: 2, after: "Y3Vyc29yMQ==") {
+        totalCount
+        edges {
+            node {
+                name
+            }
+            cursor
+        }
+        pageInfo {
+            endCursor
+            hasNextPage
+        }
+    }
+}
+```
+```
+{
+  "data": {
+    "hero": {
+      "name": "R2-D2",
+      "friendsConnection": {
+        "totalCount": 3,
+        "edges": [
+          {
+            "node": {
+              "name": "Han Solo"
+            },
+            "cursor": "Y3Vyc29yMg=="
+          },
+          {
+            "node": {
+              "name": "Leia Organa"
+            },
+            "cursor": "Y3Vyc29yMw=="
+          }
+        ],
+        "pageInfo": {
+          "endCursor": "Y3Vyc29yMw==",
+          "hasNextPage": false
+        }
+      }
+    }
+  }
+}
+```
+
 
 
 # 参考リンク
